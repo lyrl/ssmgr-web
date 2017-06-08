@@ -44,7 +44,7 @@ class Register extends React.Component {
 
     return (
         <div className="container">
-          <form className="form-signin" style={{maxWidth: 400, margin: "0 auto"}}>
+          <form className="form-signin" style={{maxWidth: 400, margin: "0 auto", marginTop: 100}}>
             <h2 className="form-signin-heading">注册</h2>
 
             <div style={{margin: '10px 0 10px 0'}}>
