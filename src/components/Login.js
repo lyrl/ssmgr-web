@@ -1,42 +1,68 @@
-import { Link } from 'react-router';
-import ListErrors from './ListErrors';
 import React from 'react';
-import agent from '../agent';
 import { connect } from 'react-redux';
+import agent from '../agent';
+import ListErrors from './ListErrors';
+import {
+    UPDATE_FIELD_AUTH,
+    REGISTER,
+    REGISTER_PAGE_UNLOADED,
+    LOGIN_PAGE_UNLOADED,
+    LOGIN
+} from '../constants/actionTypes';
+
 
 const mapStateToProps = state => ({ ...state.auth });
 
 const mapDispatchToProps = dispatch => ({
-  // onChangeEmail: value =>
-  //   dispatch({ type: 'UPDATE_FIELD_AUTH', key: 'email', value }),
-  // onChangePassword: value =>
-  //   dispatch({ type: 'UPDATE_FIELD_AUTH', key: 'password', value }),
-  // onSubmit: (email, password) =>
-  //   dispatch({ type: 'LOGIN', payload: agent.Auth.login(email, password) }),
-  // onUnload: () =>
-  //   dispatch({ type: 'LOGIN_PAGE_UNLOADED' })
+  onChangechangeUserName: value =>
+    dispatch({ type: UPDATE_FIELD_AUTH, key: 'user_name', value }),
+  onChangePassword: value =>
+    dispatch({ type: UPDATE_FIELD_AUTH, key: 'password', value }),
+  onSubmit: (user_name, password) =>
+    dispatch({ type: LOGIN, payload: agent.Auth.login(user_name, password) }),
+  onUnload: () =>
+    dispatch({ type: LOGIN_PAGE_UNLOADED })
 });
 
 class Login extends React.Component {
   constructor() {
     super();
-    // this.changeEmail = ev => this.props.onChangeEmail(ev.target.value);
-    // this.changePassword = ev => this.props.onChangePassword(ev.target.value);
-    // this.submitForm = (email, password) => ev => {
-    //   ev.preventDefault();
-    //   this.props.onSubmit(email, password);
-    // };
+    this.changeUserName = ev => this.props.onChangechangeUserName(ev.target.value);
+    this.changePassword = ev => this.props.onChangePassword(ev.target.value);
+    this.submitForm = (user_name, password) => ev => {
+      ev.preventDefault();
+      this.props.onSubmit(user_name, password);
+    };
+
   }
 
   componentWillUnmount() {
-    // this.props.onUnload();
+    this.props.onUnload();
   }
 
   render() {
-    const email = this.props.email;
+    const user_name = this.props.user_name;
     const password = this.props.password;
     return (
-      <div>login form</div>
+
+        <div className="container">
+          <form className="form-signin" onSubmit={this.submitForm(user_name, password)} style={{maxWidth: 400, margin: "0 auto", marginTop: 100}}>
+              <ListErrors errors={this.props.errors} />
+              <h2 className="form-signin-heading">登录</h2>
+
+            <div style={{margin: '10px 0 10px 0'}}>
+              <label htmlFor="inputUserName" className="sr-only">用户名</label>
+              <input type="text" id="inputUserName" value={this.props.username} onChange={this.changeUserName} className="form-control" placeholder="用户名" required autofocus />
+            </div>
+
+            <div style={{margin: '0 0 10px 0'}}>
+              <label htmlFor="inputPassword" className="sr-only">密码</label>
+              <input type="password" id="inputPassword" value={this.props.password} onChange={this.changePassword} className="form-control" placeholder="密码" required autofocus />
+            </div>
+
+            <button className="btn btn-lg btn-primary btn-block" disabled={this.props.inProgress} type="submit">提交</button>
+          </form>
+        </div>
     );
   }
 }

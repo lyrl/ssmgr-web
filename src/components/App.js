@@ -5,7 +5,7 @@ import agent from '../agent';
 import Carousel from './Carousel';
 import Jumbotron from './Jumbotron';
 import Footer from './Footer';
-
+import {LOGOUT} from '../constants/actionTypes';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => ({
@@ -19,7 +19,11 @@ const mapDispatchToProps = dispatch => ({
   onLoad: (payload, token) =>
     dispatch({ type: 'APP_LOAD', payload, token }),
   onRedirect: () =>
-    dispatch({ type: 'REDIRECT' })
+    dispatch({ type: 'REDIRECT' }),
+  onClickLogout: ev => {
+    ev.preventDefault();
+    dispatch({ type: LOGOUT })
+  }
 });
 
 class App extends React.Component {
@@ -44,7 +48,9 @@ class App extends React.Component {
       <div>
         <Header
           appName={this.props.appName}
-          currentUser={this.props.currentUser} />
+          currentUser={this.props.currentUser}
+          onClickLogout={this.props.onClickLogout}
+        />
 
          {this.props.children}
 

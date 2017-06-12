@@ -1,26 +1,18 @@
 import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { promiseMiddleware, localStorageMiddleware } from './middleware';
-import article from './reducers/article';
-import articleList from './reducers/articleList';
 import auth from './reducers/auth';
 import common from './reducers/common';
-import editor from './reducers/editor';
 import home from './reducers/home';
-import profile from './reducers/profile';
-import settings from './reducers/settings';
+import logger from 'redux-logger'
+
 
 const reducer = combineReducers({
-  article,
-  articleList,
   auth,
   common,
-  editor,
-  home,
-  profile,
-  settings
+  home
 });
 
-const middleware = applyMiddleware(promiseMiddleware, localStorageMiddleware);
+const middleware = applyMiddleware(promiseMiddleware, localStorageMiddleware, logger);
 
 const store = createStore(reducer, middleware);
 
