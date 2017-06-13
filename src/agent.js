@@ -30,26 +30,6 @@ const requests = {
 const limit = (count, p) => `limit=${count}&offset=${p ? p * count : 0}`;
 const encode = encodeURIComponent;
 const omitSlug = article => Object.assign({}, article, { slug: undefined });
-const Articles = {
-  all: page =>
-    requests.get(`/articles?${limit(10, page)}`),
-  byAuthor: (author, page) =>
-    requests.get(`/articles?author=${encode(author)}&${limit(5, page)}`),
-  byTag: (tag, page) =>
-    requests.get(`/articles?tag=${encode(tag)}&${limit(10, page)}`),
-  del: slug =>
-    requests.del(`/articles/${slug}`),
-  favoritedBy: (author, page) =>
-    requests.get(`/articles?favorited=${encode(author)}&${limit(5, page)}`),
-  feed: () =>
-    requests.get('/articles/feed?limit=10&offset=0'),
-  get: slug =>
-    requests.get(`/articles/${slug}`),
-  update: article =>
-    requests.put(`/articles/${article.slug}`, { article: omitSlug(article) }),
-  create: article =>
-    requests.post('/articles', { article })
-};
 
 const Auth = {
   current: () =>
@@ -62,14 +42,6 @@ const Auth = {
     requests.put('/user', { user })
 };
 
-const Comments = {
-  create: (slug, comment) =>
-    requests.post(`/articles/${slug}/comments`, { comment }),
-  delete: (slug, commentId) =>
-    requests.del(`/articles/${slug}/comments/${commentId}`),
-  forArticle: slug =>
-    requests.get(`/articles/${slug}/comments`)
-};
 
 const Profile = {
   follow: username =>
@@ -80,15 +52,16 @@ const Profile = {
     requests.del(`/profiles/${username}/follow`)
 };
 
-const Tags = {
-  getAll: () => requests.get('/tags')
-};
+
+
+
+
+
+
+
 
 export default {
-  Articles,
   Auth,
-  Comments,
   Profile,
-  Tags,
   setToken: _token => { token = _token; }
 };

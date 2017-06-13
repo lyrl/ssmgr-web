@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 import {
     UPDATE_FIELD_AUTH,
     REGISTER,
-    REGISTER_PAGE_UNLOADED
+    REGISTER_PAGE_UNLOADED,
+    FIELD_VALIDATE_FAIL
 } from '../constants/actionTypes';
 
 const mapStateToProps = state => ({ ...state.auth });
@@ -21,6 +22,19 @@ const mapDispatchToProps = dispatch => ({
   onChangeUsername: value =>
     dispatch({ type: UPDATE_FIELD_AUTH, key: 'username', value }),
   onSubmit: (username, email, password, repeatPassword) => {
+
+    if (username.length > 12 || username.length < 3) {
+        dispatch({type: FIELD_VALIDATE_FAIL, errors: {message: "用户名必须在3-12位之间！"}});
+        return;
+    }
+
+    if (password !== repeatPassword) {
+        dispatch({type: FIELD_VALIDATE_FAIL, errors: {message: "两次密码输入不一样！"}});
+        return;
+    }
+
+
+
     const payload = agent.Auth.register(username, email, password, repeatPassword);
     dispatch({ type: REGISTER, payload })
   },
