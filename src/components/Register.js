@@ -56,9 +56,12 @@ class Register extends React.Component {
     return (
 
         <div className="container">
-            <ListErrors errors={this.props.errors} />
+
 
           <form className="form-signin" onSubmit={this.submitForm(username, email, password, repeatPassword)} style={{maxWidth: 400, margin: "0 auto", marginTop: 100}}>
+
+            <ListErrors errors={this.props.errors} />
+
             <h2 className="form-signin-heading">注册</h2>
 
             <div style={{margin: '10px 0 10px 0'}}>
