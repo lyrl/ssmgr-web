@@ -5,7 +5,7 @@ import _superagent from 'superagent';
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
-const API_ROOT = 'http://localhost:3001/api';
+const API_ROOT = 'http://103.45.2.131:3001/api';
 
 const responseBody = res => res.body;
 
@@ -43,25 +43,14 @@ const Auth = {
 };
 
 
-const Profile = {
-  follow: username =>
-    requests.post(`/profiles/${username}/follow`),
-  get: username =>
-    requests.get(`/profiles/${username}`),
-  unfollow: username =>
-    requests.del(`/profiles/${username}/follow`)
+const Product = {
+  all: () =>
+    requests.get(`/products`)
 };
-
-
-
-
-
-
-
 
 
 export default {
   Auth,
-  Profile,
+  Product,
   setToken: _token => { token = _token; }
 };

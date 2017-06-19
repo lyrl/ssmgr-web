@@ -26,8 +26,8 @@ const LoggedInView = props => {
     return (
         <div className="collapse navbar-collapse" id="myNavbar">
             <ul className="nav navbar-nav">
-                <li className="active"><a href="#">主页</a></li>
-                <li><a href="#">产品</a></li>
+                <li className="active"><Link to="/">主页</Link></li>
+                <li><Link to="admin">我的服务</Link></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
                 <li><Link >{props.currentUser.user_name}</Link></li>
@@ -44,7 +44,7 @@ const LoggedInView = props => {
 class Header extends React.Component {
   render() {
     return (
-        <nav className="navbar navbar-inverse " style={{"margin-bottom": '0px'}}>
+        <nav className="navbar navbar-inverse " style={{"marginBottom": '0px'}}>
             <div className="container-fluid">
                 <div className="navbar-header">
                     <a className="navbar-brand" href="#">{this.props.appName}</a>

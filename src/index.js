@@ -7,6 +7,7 @@ import App from './components/App';
 import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
+import Admin from './components/Admin';
 import store from './store';
 
 ReactDOM.render((
@@ -24,6 +25,9 @@ ReactDOM.render((
         {/*<Route path="editor" component={Editor} />*/}
         {/*<Route path="editor/:slug" component={Editor} />*/}
       </Route>
+        <Route path="/admin" component={Admin}>
+            <IndexRoute component={Home} />
+        </Route>
     </Router>
   </Provider>
 ), document.getElementById('root'));
