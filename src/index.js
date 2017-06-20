@@ -4,11 +4,10 @@ import React from 'react';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import App from './components/App';
-import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
-import Admin from './components/Admin';
 import store from './store';
+import Home from  './components/Home';
 
 ReactDOM.render((
   <Provider store={store}>
@@ -25,9 +24,6 @@ ReactDOM.render((
         {/*<Route path="editor" component={Editor} />*/}
         {/*<Route path="editor/:slug" component={Editor} />*/}
       </Route>
-        <Route path="/admin" component={Admin}>
-            <IndexRoute component={Home} />
-        </Route>
     </Router>
   </Provider>
 ), document.getElementById('root'));

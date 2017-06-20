@@ -1,5 +1,6 @@
 const defaultState = {
-  appName: '儒林',
+  appName: 'Shadowsocks Management System',
+  version: '0.0.1',
   token: null
 };
 

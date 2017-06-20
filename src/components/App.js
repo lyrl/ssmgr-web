@@ -1,12 +1,8 @@
-import Header from './Header';
-import Home from './Home';
 import React from 'react';
 import agent from '../agent';
-import Carousel from './Carousel';
-import Jumbotron from './Jumbotron';
-import Footer from './Footer';
 import {LOGOUT} from '../constants/actionTypes';
 import { connect } from 'react-redux';
+import MainLayout from '../layout';
 
 const mapStateToProps = state => ({
   appLoaded: state.common.appLoaded,
@@ -45,17 +41,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Header
-          appName={this.props.appName}
-          currentUser={this.props.currentUser}
-          onClickLogout={this.props.onClickLogout}
-        />
-
-         {this.props.children}
-
-         <Footer/>
-      </div>
+        <MainLayout>
+            {this.props.children}
+        </MainLayout>
     );
   }
 }
