@@ -1,0 +1,81 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "adminbsb-materialdesign",
+        "scope": null,
+        "escapedName": "adminbsb-materialdesign",
+        "name": "adminbsb-materialdesign",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "D:\\WORK\\Morden Technology Stack Projects\\ssmgr-web"
+    ]
+  ],
+  "_from": "adminbsb-materialdesign@latest",
+  "_id": "adminbsb-materialdesign@1.0.4",
+  "_inCache": true,
+  "_location": "/adminbsb-materialdesign",
+  "_nodeVersion": "0.12.2",
+  "_npmOperationalInternal": {
+    "host": "packages-18-east.internal.npmjs.com",
+    "tmp": "tmp/adminbsb-materialdesign-1.0.4.tgz_1479164919722_0.1659208566416055"
+  },
+  "_npmUser": {
+    "name": "gurayyarar",
+    "email": "guray.yarar@gmail.com"
+  },
+  "_npmVersion": "2.7.4",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "adminbsb-materialdesign",
+    "scope": null,
+    "escapedName": "adminbsb-materialdesign",
+    "name": "adminbsb-materialdesign",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/adminbsb-materialdesign/-/adminbsb-materialdesign-1.0.4.tgz",
+  "_shasum": "150e5953241f1fb64e65da727c83e9ffbefcc9e5",
+  "_shrinkwrap": null,
+  "_spec": "adminbsb-materialdesign",
+  "_where": "D:\\WORK\\Morden Technology Stack Projects\\ssmgr-web",
+  "author": {
+    "name": "Güray Yarar"
+  },
+  "bugs": {
+    "url": "https://github.com/gurayyarar/AdminBSBMaterialDesign/issues"
+  },
+  "dependencies": {},
+  "description": "AdminBSB - Free admin panel that is based on Bootstrap 3.x with Material Design",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "150e5953241f1fb64e65da727c83e9ffbefcc9e5",
+    "tarball": "https://registry.npmjs.org/adminbsb-materialdesign/-/adminbsb-materialdesign-1.0.4.tgz"
+  },
+  "gitHead": "0c3a4ab2b3180a807ba7eceaa02e8a4d2e88f56b",
+  "homepage": "https://github.com/gurayyarar/AdminBSBMaterialDesign#readme",
+  "license": "MIT",
+  "main": "js/admin.js",
+  "maintainers": [
+    {
+      "name": "gurayyarar",
+      "email": "guray.yarar@gmail.com"
+    }
+  ],
+  "name": "adminbsb-materialdesign",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gurayyarar/AdminBSBMaterialDesign.git"
+  },
+  "scripts": {},
+  "version": "1.0.4"
+}
