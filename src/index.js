@@ -4,7 +4,7 @@ import React from 'react';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 
 import App from './components/App';
-import Login from './components/Login';
+import LoginLayout from './layout/login';
 import Register from './components/Register';
 import store from './store';
 import Home from  './components/Home';
@@ -14,7 +14,6 @@ ReactDOM.render((
     <Router history={hashHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
-        <Route path="login" component={Login} />
         <Route path="register" component={Register} />
         {/*<Route path="register" component={Register} />*/}
         {/*<Route path="settings" component={Settings} />*/}
@@ -23,6 +22,9 @@ ReactDOM.render((
         {/*<Route path="@:username/favorites" component={ProfileFavorites} />*/}
         {/*<Route path="editor" component={Editor} />*/}
         {/*<Route path="editor/:slug" component={Editor} />*/}
+      </Route>
+
+      <Route path="/login" component={LoginLayout}>
       </Route>
     </Router>
   </Provider>

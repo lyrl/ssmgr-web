@@ -63,6 +63,13 @@ class SideBar extends React.Component {
                                 <span>节点管理</span>
                             </a>
                         </li>
+
+                        <li>
+                            <Link to="/login">
+                                <i className="material-icons">computer</i>
+                                <span>临时菜单-注册</span>
+                            </Link>
+                        </li>
                     </ul>
                 </div>
                 <div className="legal">

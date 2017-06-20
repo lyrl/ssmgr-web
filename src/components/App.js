@@ -2,7 +2,7 @@ import React from 'react';
 import agent from '../agent';
 import {LOGOUT} from '../constants/actionTypes';
 import { connect } from 'react-redux';
-import MainLayout from '../layout';
+import MainLayout from '../layout/main';
 
 const mapStateToProps = state => ({
   appLoaded: state.common.appLoaded,
