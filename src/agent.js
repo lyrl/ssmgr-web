@@ -43,14 +43,14 @@ const Auth = {
 };
 
 
-const Product = {
+const User = {
   all: () =>
-    requests.get(`/products`)
+    requests.get(`/users`)
 };
 
 
 export default {
   Auth,
-  Product,
+  User,
   setToken: _token => { token = _token; }
 };

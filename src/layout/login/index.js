@@ -24,7 +24,9 @@ const mapDispatchToProps = dispatch => ({
     onUnload: () =>
         dispatch({ type: LOGIN_PAGE_UNLOADED }),
     onNotified: () =>
-        dispatch({ type: ERROR_NOTIFIED })
+        dispatch({ type: ERROR_NOTIFIED }),
+    onRedirect: () =>
+        dispatch({ type: 'REDIRECT' })
 });
 
 class LoginLayout extends React.Component {
@@ -60,9 +62,6 @@ class LoginLayout extends React.Component {
             this.context.router.replace(nextProps.redirectTo);
             this.props.onRedirect();
         }
-
-
-
     }
 
     componentWillMount() {

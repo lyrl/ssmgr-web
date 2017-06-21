@@ -38,10 +38,10 @@ class SideBar extends React.Component {
                             </a>
                         </li>
                         <li>
-                            <a href="javascript:void(0);" >
+                            <Link to="/users">
                                 <i className="material-icons">account_circle</i>
                                 <span>用户管理</span>
-                            </a>
+                            </Link>
                         </li>
                         <li>
                             <a href="javascript:void(0);">

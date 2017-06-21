@@ -14,7 +14,6 @@ ReactDOM.render((
     <Router history={hashHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
-        <Route path="register" component={Register} />
         {/*<Route path="register" component={Register} />*/}
         {/*<Route path="settings" component={Settings} />*/}
         {/*<Route path="article/:id" component={Article} />*/}
@@ -23,7 +22,6 @@ ReactDOM.render((
         {/*<Route path="editor" component={Editor} />*/}
         {/*<Route path="editor/:slug" component={Editor} />*/}
       </Route>
-
       <Route path="/login" component={LoginLayout}>
       </Route>
     </Router>
