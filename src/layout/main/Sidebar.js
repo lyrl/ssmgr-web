@@ -3,26 +3,12 @@
 import { Link } from 'react-router';
 import React from 'react';
 
-const LoggedOutView = props => {
-  if (!props.currentUser) {
-    return (
-        <div className="collapse navbar-collapse" id="myNavbar">
-            <ul className="nav navbar-nav">
-                <li className="active"><a href="#">主页</a></li>
-            </ul>
-            <ul className="nav navbar-nav navbar-right">
-                <li><Link to="register">注册</Link></li>
-                <li><Link to="login">登录</Link></li>
-            </ul>
-        </div>
-    );
-  }
-  return null;
-};
-
-
 
 class SideBar extends React.Component {
+
+
+
+
   render() {
     return (
         <section>
@@ -37,7 +23,7 @@ class SideBar extends React.Component {
                         <div className="btn-group user-helper-dropdown">
                             <i className="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                             <ul className="dropdown-menu pull-right">
-                                <li><a href="javascript:void(0);"><i className="material-icons">input</i>Sign Out</a></li>
+                                <li><a href="javascript:void(0);" onClick={this.props.logout}><i className="material-icons">input</i>Sign Out</a></li>
                             </ul>
                         </div>
                     </div>

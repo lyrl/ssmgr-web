@@ -15,11 +15,7 @@ const mapDispatchToProps = dispatch => ({
   onLoad: (payload, token) =>
     dispatch({ type: 'APP_LOAD', payload, token }),
   onRedirect: () =>
-    dispatch({ type: 'REDIRECT' }),
-  onClickLogout: ev => {
-    ev.preventDefault();
-    dispatch({ type: LOGOUT })
-  }
+    dispatch({ type: 'REDIRECT' })
 });
 
 class App extends React.Component {
@@ -36,6 +32,11 @@ class App extends React.Component {
     if (nextProps.redirectTo) {
       this.context.router.replace(nextProps.redirectTo);
       this.props.onRedirect();
+    }
+
+    if (!nextProps.currentUser) {
+        this.context.router.replace('/login');
+        this.props.onRedirect();
     }
   }
 

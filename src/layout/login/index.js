@@ -6,12 +6,13 @@ import {
     UPDATE_FIELD_AUTH,
     REGISTER,
     REGISTER_PAGE_UNLOADED,
+    ERROR_NOTIFIED,
     LOGIN_PAGE_UNLOADED,
     LOGIN
 } from '../../constants/actionTypes';
+import $ from 'jquery';
 
-
-const mapStateToProps = state => ({ ...state.auth });
+const mapStateToProps = state => ({ ...state.auth, redirectTo: state.common.redirectTo, currentUser: state.common.currentUser });
 
 const mapDispatchToProps = dispatch => ({
     onChangechangeUserName: value =>
@@ -21,7 +22,9 @@ const mapDispatchToProps = dispatch => ({
     onSubmit: (user_name, password) =>
         dispatch({ type: LOGIN, payload: agent.Auth.login(user_name, password) }),
     onUnload: () =>
-        dispatch({ type: LOGIN_PAGE_UNLOADED })
+        dispatch({ type: LOGIN_PAGE_UNLOADED }),
+    onNotified: () =>
+        dispatch({ type: ERROR_NOTIFIED })
 });
 
 class LoginLayout extends React.Component {
@@ -33,11 +36,46 @@ class LoginLayout extends React.Component {
             ev.preventDefault();
             this.props.onSubmit(user_name, password);
         };
+    }
+
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+
+            window.$.notify(nextProps.errors.message, {
+                animate: {
+                    enter: 'animated flipInY',
+                    exit: 'animated flipOutX'
+                },
+                type: 'danger',
+                placement: {
+                    from: "top",
+                    align: "center"
+                },
+            });
+            this.props.onNotified();
+        }
+
+        if (nextProps.redirectTo) {
+            this.context.router.replace(nextProps.redirectTo);
+            this.props.onRedirect();
+        }
+
+
 
     }
 
-    componentDidMount() {
+    componentWillMount() {
+        if (this.props.currentUser) {
+            this.context.router.replace('/');
+            this.props.onRedirect();
+        }
+
         document.body.style.backgroundColor = '#00BCD4';
+    }
+
+    componentDidMount() {
+
     }
 
     componentWillUnmount() {
@@ -56,13 +94,13 @@ class LoginLayout extends React.Component {
                         </div>
                         <div className="card">
                             <div className="body">
-                                <form id="sign_in" method="POST">
+                                <form id="sign_in" method="POST" onSubmit={this.submitForm(user_name, password)}>
                                     <div className="input-group">
                         <span className="input-group-addon">
                             <i className="material-icons">person</i>
                         </span>
                                         <div className="form-line">
-                                            <input type="text" className="form-control" name="username" placeholder="用户名" required autofocus />
+                                            <input type="text" className="form-control" value={user_name} onChange={this.changeUserName} name="username" placeholder="用户名" required autoFocus />
                                         </div>
                                     </div>
                                     <div className="input-group">
@@ -70,16 +108,16 @@ class LoginLayout extends React.Component {
                             <i className="material-icons">lock</i>
                         </span>
                                         <div className="form-line">
-                                            <input type="password" className="form-control" name="password" placeholder="密码" required />
+                                            <input onChange={this.changePassword} value={password} type="password" className="form-control" name="password" placeholder="密码" required />
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-xs-8 p-t-5">
                                             <input type="checkbox" name="rememberme" id="rememberme" className="filled-in chk-col-pink" />
-                                            <label for="rememberme">记住我</label>
+                                            <label htmlFor="rememberme">记住我</label>
                                         </div>
                                         <div className="col-xs-4">
-                                            <button className="btn btn-block bg-pink waves-effect" type="submit">提交</button>
+                                            <button className="btn btn-block bg-pink waves-effect" type="submit" disabled={this.props.inProgress}> 提交</button>
                                         </div>
                                     </div>
                                 </form>
@@ -90,5 +128,10 @@ class LoginLayout extends React.Component {
         );
     }
 }
+
+
+LoginLayout.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginLayout);

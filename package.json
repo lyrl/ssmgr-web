@@ -8,6 +8,7 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "history": "^4.3.0",
+    "jquery": "^1.2.1",
     "marked": "^0.3.6",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",

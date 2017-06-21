@@ -18,11 +18,16 @@ const mapDispatchToProps = dispatch => ({
     onLoad: (tab, payload) =>
         dispatch({ type: 'HOME_PAGE_LOADED', tab, payload }),
     onUnload: () =>
-        dispatch({  type: 'HOME_PAGE_UNLOADED' })
+        dispatch({  type: 'HOME_PAGE_UNLOADED' }),
+    onClickLogout: ev => {
+        ev.preventDefault();
+        dispatch({ type: 'LOGOUT' })
+    }
 });
 
 class MainLayout extends React.Component {
     componentWillMount() {
+        document.body.style.backgroundColor = '#e9e9e9';
     }
 
     componentWillUnmount() {
@@ -32,25 +37,9 @@ class MainLayout extends React.Component {
     render() {
         return (
             <div className="theme-red">
-                <div className="page-loader-wrapper">
-                    <div className="loader">
-                        <div className="preloader">
-                            <div className="spinner-layer pl-red">
-                                <div className="circle-clipper left">
-                                    <div className="circle"></div>
-                                </div>
-                                <div className="circle-clipper right">
-                                    <div className="circle"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <p>稍等片刻......</p>
-                    </div>
-                </div>
+                <Header appName={this.props.appName}  />
 
-                <Header appName={this.props.appName} />
-
-                <SideBar appName={this.props.appName} version={this.props.version}  />
+                <SideBar appName={this.props.appName} version={this.props.version}  logout={this.props.onClickLogout} />
 
                 <section className="content">
                     {this.props.children}
