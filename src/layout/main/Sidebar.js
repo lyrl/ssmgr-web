@@ -32,10 +32,10 @@ class SideBar extends React.Component {
                     <ul className="list">
                         <li className="header">导航</li>
                         <li className="active">
-                            <a href="index.html">
+                            <Link to="/">
                                 <i className="material-icons">home</i>
                                 <span>主页</span>
-                            </a>
+                            </Link>
                         </li>
                         <li>
                             <Link to="/users">

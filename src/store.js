@@ -4,6 +4,7 @@ import auth from './reducers/auth';
 import common from './reducers/common';
 import home from './reducers/home';
 import product from './reducers/product';
+import user from './reducers/user';
 import logger from 'redux-logger'
 
 
@@ -11,7 +12,8 @@ const reducer = combineReducers({
   auth,
   common,
   home,
-  product
+  product,
+  user
 });
 
 const middleware = applyMiddleware(promiseMiddleware, localStorageMiddleware, logger);

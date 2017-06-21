@@ -8,13 +8,14 @@ import LoginLayout from './layout/login';
 import Register from './components/Register';
 import store from './store';
 import Home from  './components/Home';
+import UserContainer from './components/UserList';
 
 ReactDOM.render((
   <Provider store={store}>
     <Router history={hashHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
-        {/*<Route path="register" component={Register} />*/}
+        <Route path="users" component={UserContainer} />
         {/*<Route path="settings" component={Settings} />*/}
         {/*<Route path="article/:id" component={Article} />*/}
         {/*<Route path="@:username" component={Profile} />*/}
