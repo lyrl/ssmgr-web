@@ -1,5 +1,3 @@
-import { Link } from 'react-router';
-import ListErrors from './ListErrors';
 import React from 'react';
 import agent from '../agent';
 import { connect } from 'react-redux';
@@ -74,7 +72,6 @@ class Register extends React.Component {
 
           <form className="form-signin" onSubmit={this.submitForm(username, email, password, repeatPassword)} style={{maxWidth: 400, margin: "0 auto", marginTop: 100}}>
 
-            <ListErrors errors={this.props.errors} />
 
             <h2 className="form-signin-heading">注册</h2>
 

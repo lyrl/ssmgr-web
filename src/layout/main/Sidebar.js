@@ -2,6 +2,7 @@
 
 import { Link } from 'react-router';
 import React from 'react';
+import Menu from './Menu';
 
 
 class SideBar extends React.Component {
@@ -31,31 +32,13 @@ class SideBar extends React.Component {
                 <div className="menu">
                     <ul className="list">
                         <li className="header">导航</li>
-                        <li className="active">
-                            <Link to="/">
-                                <i className="material-icons">home</i>
-                                <span>主页</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <Link to="/users">
-                                <i className="material-icons">account_circle</i>
-                                <span>用户管理</span>
-                            </Link>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);">
-                                <i className="material-icons">computer</i>
-                                <span>节点管理</span>
-                            </a>
-                        </li>
 
-                        <li>
-                            <Link to="/login">
-                                <i className="material-icons">computer</i>
-                                <span>临时菜单-注册</span>
-                            </Link>
-                        </li>
+                        <Menu name="主页" icon="home" to="/" />
+                        <Menu name="用户管理" icon="account_circle" to="/users" />
+                        <Menu name="节点管理" icon="computer" to="/nodes" />
+                        <Menu name="临时菜单-登录" icon="computer" to="/login" />
+
+
                     </ul>
                 </div>
                 <div className="legal">

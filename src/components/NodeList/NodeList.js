@@ -11,7 +11,7 @@ const mapStateToProps = state => ({});
 const mapDispatchToProps = dispatch => ({
 });
 
-class UserList extends React.Component {
+class NodeList extends React.Component {
     constructor() {
         super();
     }
@@ -66,25 +66,26 @@ class UserList extends React.Component {
     }
 
     render() {
-        let users;
+        let nodes;
 
-        if (this.props.users) {
-            console.log('props.users ' + this.props.users);
+        if (this.props.nodes) {
+            console.log('props.nodes ' + this.props.nodes);
 
-            users = this.props.users.map(user => {
+            nodes = this.props.nodes.map(node => {
                 return <tr>
-                    <td>{user.id}</td>
-                    <td>{user.user_name}</td>
-                    <td>{user.email}</td>
-                    <td>0</td>
-                    <td>0</td>
+                    <td>{node.id}</td>
+                    <td>{node.node_name}</td>
+                    <td>{node.node_ip}</td>
+                    <td>{node.node_port}</td>
+                    <td>{node.node_key}</td>
+                    <td>{node.node_encry_mode}</td>
                     <td></td>
                 </tr>
             });
 
 
         } else {
-            users = null;
+            nodes = null;
         }
 
         return (
@@ -93,7 +94,7 @@ class UserList extends React.Component {
                     <div className="card">
                         <div className="header">
                             <h2>
-                                用户管理
+                                节点管理
                             </h2>
                             <ul className="header-dropdown m-r--5">
                                 <li className="dropdown">
@@ -113,25 +114,27 @@ class UserList extends React.Component {
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>用户名</th>
-                                    <th>邮箱</th>
-                                    <th>已用流量</th>
-                                    <th>节点数</th>
+                                    <th>节点</th>
+                                    <th>IP</th>
+                                    <th>端口</th>
+                                    <th>秘钥</th>
+                                    <th>默认加密方法</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
                                 <tfoot>
                                 <tr>
                                     <th>ID</th>
-                                    <th>用户名</th>
-                                    <th>邮箱</th>
-                                    <th>已用流量</th>
-                                    <th>节点数</th>
+                                    <th>节点</th>
+                                    <th>IP</th>
+                                    <th>端口</th>
+                                    <th>秘钥</th>
+                                    <th>默认加密方法</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                {users}
+                                    {nodes}
                                 </tbody>
                             </table>
                         </div>
@@ -143,4 +146,4 @@ class UserList extends React.Component {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserList);
+export default connect(mapStateToProps, mapDispatchToProps)(NodeList);

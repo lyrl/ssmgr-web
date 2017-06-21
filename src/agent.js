@@ -48,9 +48,14 @@ const User = {
     requests.get(`/users`)
 };
 
+const Node = {
+    all: () =>
+        requests.get(`/nodes`)
+};
 
 export default {
   Auth,
   User,
+  Node,
   setToken: _token => { token = _token; }
 };

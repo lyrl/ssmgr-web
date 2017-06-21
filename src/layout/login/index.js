@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import agent from '../../agent';
-import ListErrors from '../../components/ListErrors';
 import {
     UPDATE_FIELD_AUTH,
     REGISTER,
@@ -10,7 +9,6 @@ import {
     LOGIN_PAGE_UNLOADED,
     LOGIN
 } from '../../constants/actionTypes';
-import $ from 'jquery';
 
 const mapStateToProps = state => ({ ...state.auth, redirectTo: state.common.redirectTo, currentUser: state.common.currentUser });
 

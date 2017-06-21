@@ -19,5 +19,9 @@ export const USER_LIST_UNLOAD = 'USER_LIST_UNLOAD';
 export const USER_LIST_LOAD = 'USER_LIST_LOAD';
 
 
+export const NODE_LIST_UNLOAD = 'NODE_LIST_UNLOAD';
+export const NODE_LIST_LOAD = 'NODE_LIST_LOAD';
+
+
 
 
