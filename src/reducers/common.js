@@ -1,7 +1,8 @@
 const defaultState = {
   appName: 'Shadowsocks Management System',
   version: '0.0.1',
-  token: null
+  token: null,
+  loading: false
 };
 
 export default (state = defaultState, action) => {
@@ -36,6 +37,12 @@ export default (state = defaultState, action) => {
       };
     case 'DELETE_ARTICLE':
       return { ...state, redirectTo: '/' };
+    case 'ASYNC_START':
+      return { ...state, loading: true};
+
+    case 'ASYNC_END':
+      return { ...state, loading: false};
+
   }
   return state;
 };

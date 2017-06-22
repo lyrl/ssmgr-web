@@ -1,6 +1,7 @@
 import React from 'react';
 import {LOGOUT} from '../constants/actionTypes';
 import { connect } from 'react-redux';
+import PageLoader from './PageLoader';
 
 const mapStateToProps = state => ({
   appLoaded: state.common.appLoaded,
@@ -20,12 +21,33 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
+
+
 class Home extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {loaded: false}
+  }
+
+  componentDidMount(){
+    this.setState(previousState => {
+      return {loaded: true}
+    });
+
+    window.$('.count-to').countTo()
+  }
+
+
   render() {
     return (
         <div className="container-fluid">
+
+          <PageLoader loaded={this.state.loaded} />
+
           <div className="block-header">
-            <h2>DASHBOARD</h2>
+            <h2>仪表盘</h2>
           </div>
 
           <div className="row clearfix">
@@ -35,8 +57,8 @@ class Home extends React.Component {
                   <i className="material-icons">playlist_add_check</i>
                 </div>
                 <div className="content">
-                  <div className="text">NEW TASKS</div>
-                  <div className="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+                  <div className="text">用户数</div>
+                  <div className="number count-to" data-from="0" data-to="125" data-speed="500" data-fresh-interval="20"></div>
                 </div>
               </div>
             </div>
@@ -46,30 +68,8 @@ class Home extends React.Component {
                   <i className="material-icons">help</i>
                 </div>
                 <div className="content">
-                  <div className="text">NEW TICKETS</div>
-                  <div className="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-              <div className="info-box bg-light-green hover-expand-effect">
-                <div className="icon">
-                  <i className="material-icons">forum</i>
-                </div>
-                <div className="content">
-                  <div className="text">NEW COMMENTS</div>
-                  <div className="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-              <div className="info-box bg-orange hover-expand-effect">
-                <div className="icon">
-                  <i className="material-icons">person_add</i>
-                </div>
-                <div className="content">
-                  <div className="text">NEW VISITORS</div>
-                  <div className="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20"></div>
+                  <div className="text">节点数</div>
+                  <div className="number count-to" data-from="0" data-to="257" data-speed="500" data-fresh-interval="20"></div>
                 </div>
               </div>
             </div>

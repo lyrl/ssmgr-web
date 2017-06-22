@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import agent from '../../agent';
+import PageLoader from '../PageLoader';
+
 import {
     NODE_LIST_UNLOAD,
     NODE_LIST_LOAD
@@ -37,7 +39,11 @@ class NodeListContainer extends React.Component {
 
     render() {
         return (
+        <div>
+            <PageLoader/>
             <NodeList nodes={this.props.nodes}/>
+        </div>
+
         );
     }
 }

@@ -6,6 +6,7 @@ import {
     USER_LIST_LOAD
 } from '../../constants/actionTypes';
 import UserList from './UserList';
+import PageLoader from '../PageLoader';
 
 const mapStateToProps = state => ({...state.user});
 
@@ -19,6 +20,8 @@ const mapDispatchToProps = dispatch => ({
 class UserListContainer extends React.Component {
     constructor() {
         super();
+
+        this.state = {loaded: false}
     }
 
 
@@ -30,15 +33,22 @@ class UserListContainer extends React.Component {
     }
 
     componentDidMount() {
-    }
-
-    componentWillUnmount() {
+        this.setState(previousState => {
+            return {loaded: true}
+        });
     }
 
     render() {
         return (
+        <div>
+            <PageLoader/>
             <UserList users={this.props.users}/>
-        );
+        </div>
+
+    );
+    }
+
+    componentWillUnmount() {
     }
 }
 
