@@ -45,7 +45,9 @@ const Auth = {
 
 const User = {
   all: () =>
-    requests.get(`/users`)
+    requests.get(`/users`),
+  del: username =>
+    requests.del(`/users/${username}`)
 };
 
 const Node = {

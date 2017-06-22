@@ -14,18 +14,22 @@ const mapDispatchToProps = dispatch => ({
     onLoad: (payload) =>
         dispatch({type: USER_LIST_LOAD, payload}),
     onUnload: () =>
-        dispatch({ type: USER_LIST_UNLOAD })
+        dispatch({ type: USER_LIST_UNLOAD }),
+    onDeleteUser: (payload) =>
+        dispatch({ type: 'DELETE_USER', payload }),
 });
 
 class UserListContainer extends React.Component {
     constructor() {
         super();
 
-        this.state = {loaded: false}
+        this.deleteUser = this.deleteUser.bind(this);
     }
 
-
     componentWillReceiveProps(nextProps) {
+        if (nextProps.need_refresh) {
+            setTimeout(()=> this.props.onLoad(agent.User.all()));
+        }
     }
 
     componentWillMount() {
@@ -33,16 +37,17 @@ class UserListContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.setState(previousState => {
-            return {loaded: true}
-        });
+    }
+
+    deleteUser(user) {
+        this.props.onDeleteUser(agent.User.del(user.user_name))
     }
 
     render() {
         return (
         <div>
             <PageLoader/>
-            <UserList users={this.props.users}/>
+            <UserList users={this.props.users} deleteUserHandler={this.deleteUser} />
         </div>
 
     );

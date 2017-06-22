@@ -5,6 +5,7 @@ import {
     USER_LIST_UNLOAD,
     USER_LIST_LOAD
 } from '../../constants/actionTypes';
+import {Dialog_Delete} from '../Dialog/';
 
 const mapStateToProps = state => ({});
 
@@ -12,19 +13,21 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class UserList extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
+
+        this.deleteUser = props.deleteUserHandler;
     }
 
 
     componentWillReceiveProps(nextProps) {
+        window.$('.js-basic-example').DataTable().destroy();
     }
 
     componentWillMount() {
     }
 
     componentDidUpdate() {
-        window.$('.js-basic-example').DataTable().destroy();
 
         window.$('.js-basic-example').DataTable({
             responsive: true,
@@ -65,6 +68,9 @@ class UserList extends React.Component {
     componentWillUnmount() {
     }
 
+
+
+
     render() {
         let users;
 
@@ -78,7 +84,9 @@ class UserList extends React.Component {
                     <td>{user.email}</td>
                     <td>0</td>
                     <td>0</td>
-                    <td></td>
+                    <td>
+                        <Dialog_Delete title={`确认要删除用户: ${user.user_name} 吗？`} text=""  deleteHandler={() => {this.deleteUser(user)}} />
+                    </td>
                 </tr>
             });
 
@@ -131,7 +139,7 @@ class UserList extends React.Component {
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                {users}
+                                    {users}
                                 </tbody>
                             </table>
                         </div>

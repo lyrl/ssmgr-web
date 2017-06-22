@@ -54,7 +54,7 @@ class Home extends React.Component {
             <div className="col-lg-3 col-md-3 col-sm-6 col-xs-12">
               <div className="info-box bg-pink hover-expand-effect">
                 <div className="icon">
-                  <i className="material-icons">playlist_add_check</i>
+                  <i className="material-icons">face</i>
                 </div>
                 <div className="content">
                   <div className="text">用户数</div>
@@ -65,11 +65,11 @@ class Home extends React.Component {
             <div className="col-lg-3 col-md-3 col-sm-6 col-xs-12">
               <div className="info-box bg-cyan hover-expand-effect">
                 <div className="icon">
-                  <i className="material-icons">help</i>
+                  <i className="material-icons">devices</i>
                 </div>
                 <div className="content">
                   <div className="text">节点数</div>
-                  <div className="number count-to" data-from="0" data-to="257" data-speed="500" data-fresh-interval="20"></div>
+                  <div className="number count-to" data-from="0" data-to="23" data-speed="500" data-fresh-interval="20"></div>
                 </div>
               </div>
             </div>

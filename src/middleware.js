@@ -8,7 +8,6 @@ const promiseMiddleware = store => next => action => {
         action.payload = res;
         store.dispatch(action);
         store.dispatch({ type: 'ASYNC_END'});
-
       },
       error => {
         action.error = true;
