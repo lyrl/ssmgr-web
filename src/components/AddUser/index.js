@@ -60,11 +60,7 @@ class AddUserContainer extends React.Component {
 
     render() {
         return (
-        <div>
-            <PageLoader/>
-            <AddUserForm onCancel={this.handleClickCancel}/>
-        </div>
-
+            <AddUserForm onCancel={this.handleClickCancel} user_name={this.state.user_name} password={this.state.password} email={this.state.email}/>
     );
     }
 }

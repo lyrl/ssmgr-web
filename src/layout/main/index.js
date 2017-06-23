@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Header from "./Header";
 import SideBar from "./Sidebar";
 import Notifier from '../../components/Notifier';
+import PageLoader from '../../components/PageLoader';
 
 
 const Promise = global.Promise;
@@ -39,6 +40,7 @@ class MainLayout extends React.Component {
         return (
             <div className="theme-red">
                 <Notifier />
+                <PageLoader/>
 
                 <Header appName={this.props.appName}  />
 

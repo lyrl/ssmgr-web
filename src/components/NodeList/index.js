@@ -39,11 +39,7 @@ class NodeListContainer extends React.Component {
 
     render() {
         return (
-        <div>
-            <PageLoader/>
             <NodeList nodes={this.props.nodes}/>
-        </div>
-
         );
     }
 }

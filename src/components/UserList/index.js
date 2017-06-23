@@ -52,15 +52,12 @@ class UserListContainer extends React.Component {
 
   render() {
     return (
-        <div>
-            <PageLoader/>
-            <UserList users={this.props.users} deleteUserHandler={this.deleteUser} refreshHandler={this.props.onRefresh} />
-        </div>
-
+        <UserList users={this.props.users} deleteUserHandler={this.deleteUser} refreshHandler={this.props.onRefresh} />
     );
   }
 
   componentWillUnmount() {
+    this.props.onUnload();
   }
 }
 

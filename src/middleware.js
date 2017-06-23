@@ -6,16 +6,28 @@ const promiseMiddleware = store => next => action => {
     action.payload.then(
       res => {
         action.payload = res;
+
         store.dispatch(action);
         store.dispatch({ type: 'ASYNC_END'});
       },
       error => {
+        console.log('eror: ' + JSON.stringify(error));
         action.error = true;
-        action.payload = error.response.body;
-        store.dispatch(action);
+
+        if (typeof error.response === 'undefined') {
+          store.dispatch({ type: 'ASYNC_END'});
+
+          store.dispatch({type: 'NOTIFICATION', message: '网络问题，请检查网络连接！', notitype: 'bg-black'});
+        } else {
+          action.payload = error.response.body;
+          store.dispatch(action);
+        }
+
         store.dispatch({ type: 'ASYNC_END'});
       }
-    );
+    ).catch(error => {
+      console.log('catch error: ' + JSON.stringify(error))
+    });
 
     return;
   }
