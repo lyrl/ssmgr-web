@@ -39,10 +39,11 @@ export default (state = defaultState, action) => {
       return { ...state, redirectTo: '/' };
     case 'ASYNC_START':
       return { ...state, loading: true};
-
     case 'ASYNC_END':
       return { ...state, loading: false};
-
+    case 'CANCEL_ADD_USER':
+        return { ...state, redirectTo: '/users' };
   }
+
   return state;
 };

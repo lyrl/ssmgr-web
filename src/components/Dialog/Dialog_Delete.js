@@ -32,7 +32,7 @@ class Dialog_Delte extends React.Component {
   render() {
     return (
         <div >
-            <button className="btn btn-primary waves-effect" datatype="confirm" onClick={this.onDelete}>删除</button>
+            <button className="btn btn-danger waves-effect" datatype="confirm" onClick={this.onDelete}>删除</button>
         </div>
     );
   }

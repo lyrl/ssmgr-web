@@ -15,7 +15,10 @@ const mapDispatchToProps = dispatch => ({
   onLoad: (payload, token) =>
     dispatch({ type: 'APP_LOAD', payload, token }),
   onRedirect: () =>
-    dispatch({ type: 'REDIRECT' })
+    dispatch({ type: 'REDIRECT' }),
+  onMessage: (message) => {
+      dispatch({type: 'NOTIFICATION', message})
+  }
 });
 
 class App extends React.Component {
@@ -32,6 +35,10 @@ class App extends React.Component {
     if (nextProps.redirectTo) {
       this.context.router.replace(nextProps.redirectTo);
       this.props.onRedirect();
+    }
+
+    if (nextProps.currentUser && !this.props.currentUser) {
+        this.props.onMessage(`${nextProps.currentUser.user_name}，欢迎回来！`);
     }
 
     if (!nextProps.currentUser) {

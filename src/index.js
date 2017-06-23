@@ -10,6 +10,7 @@ import store from './store';
 import Home from  './components/Home';
 import UserListContainer from './components/UserList';
 import NodeListContainer from './components/NodeList';
+import AddUserContainer from './components/AddUser';
 
 ReactDOM.render((
   <Provider store={store}>
@@ -17,6 +18,7 @@ ReactDOM.render((
       <Route path="/" component={App}>
         <IndexRoute component={Home} />
         <Route path="users" component={UserListContainer} />
+        <Route path="users/add" component={AddUserContainer} />
         <Route path="nodes" component={NodeListContainer} />
         {/*<Route path="settings" component={Settings} />*/}
         {/*<Route path="article/:id" component={Article} />*/}

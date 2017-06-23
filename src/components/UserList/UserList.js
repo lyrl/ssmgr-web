@@ -6,6 +6,8 @@ import {
     USER_LIST_LOAD
 } from '../../constants/actionTypes';
 import {Dialog_Delete} from '../Dialog/';
+import { Link } from 'react-router';
+
 
 const mapStateToProps = state => ({});
 
@@ -103,18 +105,22 @@ class UserList extends React.Component {
                             <h2>
                                 用户管理
                             </h2>
+
+
+
                             <ul className="header-dropdown m-r--5">
                                 <li className="dropdown">
-                                    <a href="javascript:void(0);" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i className="material-icons">more_vert</i>
+
+                                    <Link to="/users/add" className="dropdown-toggle">
+                                        <i className="material-icons" alt="添加用户">add</i>
+                                    </Link>
+                                    <a href="javascript:void(0);" className="dropdown-toggle">
+                                        <i className="material-icons"  alt="刷新">refresh</i>
                                     </a>
-                                    <ul className="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
                                 </li>
                             </ul>
+
+
                         </div>
                         <div className="body">
                             <table className="table table-bordered table-striped table-hover js-basic-example dataTable">

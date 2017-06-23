@@ -5,7 +5,8 @@ import common from './reducers/common';
 import home from './reducers/home';
 import user from './reducers/user';
 import node from './reducers/node';
-import logger from 'redux-logger'
+import notifier from './reducers/notifier';
+import logger from 'redux-logger';
 
 
 const reducer = combineReducers({
@@ -13,7 +14,8 @@ const reducer = combineReducers({
   common,
   home,
   user,
-  node
+  node,
+  notifier
 });
 
 const middleware = applyMiddleware(promiseMiddleware, localStorageMiddleware, logger);

@@ -36,7 +36,7 @@ class Home extends React.Component {
       return {loaded: true}
     });
 
-    window.$('.count-to').countTo()
+    window.$('.count-to').countTo();
   }
 
 

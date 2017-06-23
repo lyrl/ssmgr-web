@@ -16,7 +16,7 @@ export default (state = {need_refresh: false}, action) => {
             ...state,
             users: null,
             need_refresh: true
-        }
+        };
   }
 
   return state;

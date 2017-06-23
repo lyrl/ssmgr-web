@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Header from "./Header";
 import SideBar from "./Sidebar";
+import Notifier from '../../components/Notifier';
 
 
 const Promise = global.Promise;
@@ -37,6 +38,8 @@ class MainLayout extends React.Component {
     render() {
         return (
             <div className="theme-red">
+                <Notifier />
+
                 <Header appName={this.props.appName}  />
 
                 <SideBar appName={this.props.appName} version={this.props.version}  logout={this.props.onClickLogout} />
