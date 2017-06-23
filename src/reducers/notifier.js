@@ -1,10 +1,10 @@
 export default (state = {}, action) => {
 
   let defaltConf = {
-    type: 'success',
+    type: 'bg-blue',
         placement: {
           from: 'top',
-          align: 'right'
+          align: 'center'
     }
   };
 
@@ -36,6 +36,20 @@ export default (state = {}, action) => {
     case 'DELETE_USER': {
       let conf = {...defaltConf};
       conf.message = "删除成功！";
+
+      if (action.error) {
+        conf.type = 'bg-red';
+        conf.message = action.payload.errors.message;
+      }
+
+      return {
+        ...state,
+        noti: conf
+      }
+    }
+    case 'USER_LIST_REFRESH': {
+      let conf = {...defaltConf};
+      conf.message = "正在刷新用户列表！";
 
       return {
         ...state,

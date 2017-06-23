@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import agent from '../../agent';
 import {
-    USER_LIST_UNLOAD,
-    USER_LIST_LOAD
+  USER_LIST_UNLOAD,
+  USER_LIST_LOAD
 } from '../../constants/actionTypes';
 import UserList from './UserList';
 import PageLoader from '../PageLoader';
@@ -11,54 +11,57 @@ import PageLoader from '../PageLoader';
 const mapStateToProps = state => ({...state.user});
 
 const mapDispatchToProps = dispatch => ({
-    onLoad: (payload) =>
-        dispatch({type: USER_LIST_LOAD, payload}),
-    onUnload: () =>
-        dispatch({ type: USER_LIST_UNLOAD }),
-    onDeleteUser: (payload) =>
-        dispatch({ type: 'DELETE_USER', payload }),
-    onMessage: (message) => {
-        dispatch({type: 'NOTIFICATION', message})
-    }
+  onLoad: (payload) =>
+      dispatch({type: USER_LIST_LOAD, payload}),
+  onUnload: () =>
+      dispatch({ type: USER_LIST_UNLOAD }),
+  onDeleteUser: (payload) =>
+      dispatch({ type: 'DELETE_USER', payload }),
+  onMessage: (message) => {
+    dispatch({type: 'NOTIFICATION', message})
+  },
+  onRefresh: () => {
+    dispatch({type: 'USER_LIST_REFRESH'})
+  }
 });
 
 class UserListContainer extends React.Component {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        this.deleteUser = this.deleteUser.bind(this);
+    this.deleteUser = this.deleteUser.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.need_refresh) {
+      setTimeout(()=> this.props.onLoad(agent.User.all()));
     }
+  }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.need_refresh) {
-            setTimeout(()=> this.props.onLoad(agent.User.all()));
-        }
-    }
+  componentWillMount() {
+    this.props.onLoad(agent.User.all())
+  }
 
-    componentWillMount() {
-        this.props.onLoad(agent.User.all())
-    }
+  componentDidMount() {
+  }
 
-    componentDidMount() {
-    }
+  deleteUser(user) {
+    this.props.onDeleteUser(agent.User.del(user.user_name));
+    this.props.onMessage(`正在删除用户${user.user_name}!`);
+  }
 
-    deleteUser(user) {
-        this.props.onDeleteUser(agent.User.del(user.user_name));
-        this.props.onMessage(`正在删除用户${user.user_name}!`);
-    }
-
-    render() {
-        return (
+  render() {
+    return (
         <div>
             <PageLoader/>
-            <UserList users={this.props.users} deleteUserHandler={this.deleteUser} />
+            <UserList users={this.props.users} deleteUserHandler={this.deleteUser} refreshHandler={this.props.onRefresh} />
         </div>
 
     );
-    }
+  }
 
-    componentWillUnmount() {
-    }
+  componentWillUnmount() {
+  }
 }
 
 

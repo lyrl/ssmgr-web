@@ -6,17 +6,18 @@ export default (state = {need_refresh: false}, action) => {
         users: action.error ? null : action.payload.users,
         need_refresh: false
       };
-      case 'USER_LIST_UNLOAD':
-        return {
-            ...state,
-            users: null
-        };
-      case 'DELETE_USER':
-        return {
-            ...state,
-            users: null,
-            need_refresh: true
-        };
+    case 'USER_LIST_UNLOAD':
+      return {
+        ...state,
+        users: null
+      };
+    case 'DELETE_USER':
+    case 'USER_LIST_REFRESH':
+      return {
+        ...state,
+        users: null,
+        need_refresh: true
+      };
   }
 
   return state;
