@@ -1,3 +1,5 @@
+import {USER_DELETE} from '../constants/actionTypes';
+
 export default (state = {}, action) => {
 
   let defaltConf = {
@@ -33,7 +35,7 @@ export default (state = {}, action) => {
       return {
         ...state, noti: null
       };
-    case 'DELETE_USER': {
+    case USER_DELETE: {
       let conf = {...defaltConf};
       conf.message = "删除成功！";
 
@@ -61,15 +63,6 @@ export default (state = {}, action) => {
         noti: conf
       }
     }
-    // case 'USER_LIST_REFRESH': {
-    //   let conf = {...defaltConf};
-    //   conf.message = "正在刷新用户列表！";
-    //
-    //   return {
-    //     ...state,
-    //     noti: conf
-    //   }
-    // }
 
   }
 

@@ -1,3 +1,5 @@
+import {USER_DELETE} from '../constants/actionTypes';
+
 export default (state = {need_refresh: false}, action) => {
   switch (action.type) {
     case 'USER_LIST_LOAD':
@@ -11,7 +13,7 @@ export default (state = {need_refresh: false}, action) => {
         ...state,
         users: null
       };
-    case 'DELETE_USER':
+    case USER_DELETE:
     case 'USER_LIST_REFRESH':
       return {
         ...state,

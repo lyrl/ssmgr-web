@@ -15,12 +15,17 @@ export const PRODUCT_PAGE_UNLOADED = 'PRODUCT_PAGE_UNLOADED';
 
 export const ERROR_NOTIFIED = 'ERROR_NOTIFIED';
 
-export const USER_LIST_UNLOAD = 'USER_LIST_UNLOAD';
-export const USER_LIST_LOAD = 'USER_LIST_LOAD';
-
-
 export const NODE_LIST_UNLOAD = 'NODE_LIST_UNLOAD';
 export const NODE_LIST_LOAD = 'NODE_LIST_LOAD';
+
+
+
+// User
+export const USER_LIST_UNLOAD = 'USER_LIST_UNLOAD';
+export const USER_LIST_LOAD = 'USER_LIST_LOAD';
+export const USER_DELETE = 'USER_DELETE';
+
+
 
 
 

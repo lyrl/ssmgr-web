@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import agent from '../../agent';
 import {
   USER_LIST_UNLOAD,
-  USER_LIST_LOAD
+  USER_LIST_LOAD,
+  USER_DELETE
 } from '../../constants/actionTypes';
 import UserList from './UserList';
 import PageLoader from '../PageLoader';
@@ -16,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
   onUnload: () =>
       dispatch({ type: USER_LIST_UNLOAD }),
   onDeleteUser: (payload) =>
-      dispatch({ type: 'DELETE_USER', payload }),
+      dispatch({ type: USER_DELETE, payload }),
   onMessage: (message) => {
     dispatch({type: 'NOTIFICATION', message})
   },
