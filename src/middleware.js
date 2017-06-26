@@ -3,8 +3,10 @@ import agent from './agent';
 const promiseMiddleware = store => next => action => {
   if (isPromise(action.payload)) {
     store.dispatch({ type: 'ASYNC_START', subtype: action.type });
+
     action.payload.then(
       res => {
+        console.log('res: ' + JSON.stringify(res));
         action.payload = res;
 
         store.dispatch(action);
@@ -15,18 +17,17 @@ const promiseMiddleware = store => next => action => {
         action.error = true;
 
         if (typeof error.response === 'undefined') {
-          store.dispatch({ type: 'ASYNC_END'});
-
           store.dispatch({type: 'NOTIFICATION', message: '网络问题，请检查网络连接！', notitype: 'bg-black'});
         } else {
           action.payload = error.response.body;
           store.dispatch(action);
+
+          store.dispatch({type: 'NOTIFICATION', message: `操作失败： ${error.response.status}, ${error.response.body.errors.message}`, notitype: 'bg-black'});
         }
 
         store.dispatch({ type: 'ASYNC_END'});
       }
-    ).catch(error => {
-      console.log('catch error: ' + JSON.stringify(error))
+    ).catch(err => {
     });
 
     return;

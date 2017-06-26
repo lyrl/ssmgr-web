@@ -47,15 +47,16 @@ export default (state = {}, action) => {
         noti: conf
       }
     }
-    case 'USER_LIST_REFRESH': {
-      let conf = {...defaltConf};
-      conf.message = "正在刷新用户列表！";
+    // case 'USER_LIST_REFRESH': {
+    //   let conf = {...defaltConf};
+    //   conf.message = "正在刷新用户列表！";
+    //
+    //   return {
+    //     ...state,
+    //     noti: conf
+    //   }
+    // }
 
-      return {
-        ...state,
-        noti: conf
-      }
-    }
   }
 
   return state;

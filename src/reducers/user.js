@@ -18,6 +18,7 @@ export default (state = {need_refresh: false}, action) => {
         users: null,
         need_refresh: true
       };
+
   }
 
   return state;

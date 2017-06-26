@@ -43,6 +43,8 @@ export default (state = defaultState, action) => {
       return { ...state, loading: false};
     case 'CANCEL_ADD_USER':
         return { ...state, redirectTo: '/users' };
+    case 'ADD_USER':
+      return { ...state, redirectTo: action.error ? null : '/users'}
   }
 
   return state;

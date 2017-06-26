@@ -9,6 +9,11 @@ const API_ROOT = 'http://103.45.2.131:3001/api';
 
 const responseBody = res => res.body;
 
+const handle = (err, response) => {
+  // console.log('handle err: '  + JSON.parse(JSON.stringify(err))['status']);
+  // console.log('handle response: '  + JSON.stringify(response));
+};
+
 let token = null;
 const tokenPlugin = req => {
   if (token) {
@@ -47,7 +52,13 @@ const User = {
   all: () =>
     requests.get(`/users`),
   del: username =>
-    requests.del(`/users/${username}`)
+    requests.del(`/users/${username}`),
+  create: (user_name, password, email) =>
+    requests.post('/users', {user: {
+      user_name: user_name,
+      password: password,
+      email: email
+    }})
 };
 
 const Node = {
