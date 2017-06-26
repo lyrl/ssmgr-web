@@ -1,4 +1,4 @@
-import {USER_DELETE} from '../constants/actionTypes';
+import {USER_DELETE,USER_LIST_REFRESH, USER_EDIT_PAGE_LOAD} from '../constants/actionTypes';
 
 export default (state = {need_refresh: false}, action) => {
   switch (action.type) {
@@ -14,13 +14,13 @@ export default (state = {need_refresh: false}, action) => {
         users: null
       };
     case USER_DELETE:
-    case 'USER_LIST_REFRESH':
+    case USER_LIST_REFRESH:
       return {
         ...state,
         users: null,
         need_refresh: true
       };
-    case 'MODIFY_USER_PAGE_LOAD':
+    case USER_EDIT_PAGE_LOAD:
       return {
         ...state,
         user: action.payload.user

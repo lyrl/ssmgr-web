@@ -7,7 +7,6 @@ import {
   USER_DELETE
 } from '../../constants/actionTypes';
 import UserList from './UserList';
-import PageLoader from '../PageLoader';
 
 const mapStateToProps = state => ({...state.user});
 

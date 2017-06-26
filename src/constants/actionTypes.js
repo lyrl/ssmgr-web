@@ -21,9 +21,16 @@ export const NODE_LIST_LOAD = 'NODE_LIST_LOAD';
 
 
 // User
-export const USER_LIST_UNLOAD = 'USER_LIST_UNLOAD';
 export const USER_LIST_LOAD = 'USER_LIST_LOAD';
+export const USER_LIST_UNLOAD = 'USER_LIST_UNLOAD';
+
 export const USER_DELETE = 'USER_DELETE';
+export const USER_LIST_REFRESH = 'USER_LIST_REFRESH';
+
+export const USER_EDIT_PAGE_LOAD = 'USER_EDIT_PAGE_LOAD';
+
+
+
 
 
 

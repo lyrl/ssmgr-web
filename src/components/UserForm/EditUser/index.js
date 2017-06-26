@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import agent from '../../../agent';
 import EditUserForm from './EditUserForm';
+import {USER_EDIT_PAGE_LOAD} from '../../../constants/actionTypes';
 
 const mapStateToProps = state => ({
     ...state.user
@@ -13,7 +14,7 @@ const mapDispatchToProps = dispatch => ({
   onCancel: () =>
       dispatch({type: "CANCEL_MODIFY_USER"}),
   onLoad: (payload) =>
-      dispatch({type: "MODIFY_USER_PAGE_LOAD", payload})
+      dispatch({type: USER_EDIT_PAGE_LOAD, payload})
 });
 
 class EditUserContainer extends React.Component {
