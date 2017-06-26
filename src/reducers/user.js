@@ -18,6 +18,11 @@ export default (state = {need_refresh: false}, action) => {
         users: null,
         need_refresh: true
       };
+    case 'MODIFY_USER_PAGE_LOAD':
+      return {
+        ...state,
+        user: action.payload.user
+      }
 
   }
 

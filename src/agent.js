@@ -58,7 +58,11 @@ const User = {
       user_name: user_name,
       password: password,
       email: email
-    }})
+    }}),
+  get: (user_name) =>
+    requests.get(`/users/${user_name}`),
+  update: (user_name, password) =>
+    requests.put(`/users/${user_name}`, {user:{password}})
 };
 
 const Node = {

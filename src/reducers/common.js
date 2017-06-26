@@ -42,8 +42,10 @@ export default (state = defaultState, action) => {
     case 'ASYNC_END':
       return { ...state, loading: false};
     case 'CANCEL_ADD_USER':
+    case 'CANCEL_MODIFY_USER':
         return { ...state, redirectTo: '/users' };
     case 'ADD_USER':
+    case 'MODIFY_USER':
       return { ...state, redirectTo: action.error ? null : '/users'}
   }
 

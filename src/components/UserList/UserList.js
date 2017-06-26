@@ -91,7 +91,9 @@ class UserList extends React.Component {
                     <td>
                         <div className="row">
                             <div className="col-sm-1">
-                                <button className="btn btn-primary waves-effect">修改</button>
+                                <Link to={`/users/${user.user_name}`} >
+                                    <button className="btn btn-primary waves-effect">修改</button>
+                                </Link>
                             </div>
 
                             <div className="col-sm-1 col-sm-offset-2">

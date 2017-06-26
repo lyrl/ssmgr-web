@@ -1,12 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import agent from '../../agent';
+import agent from '../../../agent';
 import {
   USER_LIST_UNLOAD,
   USER_LIST_LOAD
-} from '../../constants/actionTypes';
+} from '../../../constants/actionTypes';
 import AddUserForm from './AddUserForm';
-import PageLoader from '../PageLoader';
 
 const mapStateToProps = state => ({});
 
@@ -62,7 +61,7 @@ class AddUserContainer extends React.Component {
     this.props.onCancel();
   }
 
-  handleSubmit(ev) {
+  handleSubmit() {
     this.props.onAddUser(agent.User.create(this.state.user_name, this.state.password, this.state.email));
   }
 

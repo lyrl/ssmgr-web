@@ -47,6 +47,20 @@ export default (state = {}, action) => {
         noti: conf
       }
     }
+    case 'MODIFY_USER': {
+      let conf = {...defaltConf};
+      conf.message = "密码修改成功！";
+
+      if (action.error) {
+        conf.type = 'bg-green';
+        conf.message = action.payload.errors.message;
+      }
+
+      return {
+        ...state,
+        noti: conf
+      }
+    }
     // case 'USER_LIST_REFRESH': {
     //   let conf = {...defaltConf};
     //   conf.message = "正在刷新用户列表！";
