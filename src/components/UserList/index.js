@@ -4,7 +4,9 @@ import agent from '../../agent';
 import {
   USER_LIST_UNLOAD,
   USER_LIST_LOAD,
-  USER_DELETE
+  USER_DELETE,
+  USER_LIST_REFRESH,
+  NOTIFIER_NOTIFICATION
 } from '../../constants/actionTypes';
 import UserList from './UserList';
 
@@ -18,10 +20,10 @@ const mapDispatchToProps = dispatch => ({
   onDeleteUser: (payload) =>
       dispatch({ type: USER_DELETE, payload }),
   onMessage: (message) => {
-    dispatch({type: 'NOTIFICATION', message})
+    dispatch({type: NOTIFIER_NOTIFICATION, message})
   },
   onRefresh: () => {
-    dispatch({type: 'USER_LIST_REFRESH'})
+    dispatch({type: USER_LIST_REFRESH})
   }
 });
 

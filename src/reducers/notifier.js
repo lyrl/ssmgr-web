@@ -1,4 +1,4 @@
-import {USER_DELETE} from '../constants/actionTypes';
+import {USER_DELETE, NOTIFIER_NOTIFICATION} from '../constants/actionTypes';
 
 export default (state = {}, action) => {
 
@@ -11,7 +11,7 @@ export default (state = {}, action) => {
   };
 
   switch (action.type) {
-    case 'NOTIFICATION':{
+    case NOTIFIER_NOTIFICATION:{
       let conf = {...defaltConf};
 
       if (typeof action.notitype !== 'undefined') {

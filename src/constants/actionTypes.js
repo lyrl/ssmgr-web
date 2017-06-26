@@ -29,6 +29,10 @@ export const USER_LIST_REFRESH = 'USER_LIST_REFRESH';
 
 export const USER_EDIT_PAGE_LOAD = 'USER_EDIT_PAGE_LOAD';
 
+// Notifier
+export const NOTIFIER_NOTIFICATION = 'NOTIFIER_NOTIFICATION';
+
+
 
 
 
