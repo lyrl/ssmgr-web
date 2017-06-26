@@ -89,7 +89,15 @@ class UserList extends React.Component {
                     <td>0</td>
                     <td>0</td>
                     <td>
-                        <Dialog_Delete title={`确认要删除用户: ${user.user_name} 吗？`} text=""  deleteHandler={() => {this.deleteUser(user)}} />
+                        <div className="row">
+                            <div className="col-sm-1">
+                                <button className="btn btn-primary waves-effect">修改</button>
+                            </div>
+
+                            <div className="col-sm-1 col-sm-offset-2">
+                                <Dialog_Delete title={`确认要删除用户: ${user.user_name} 吗？`} text=""  deleteHandler={() => {this.deleteUser(user)}} />
+                            </div>
+                        </div>
                     </td>
                 </tr>
             });
