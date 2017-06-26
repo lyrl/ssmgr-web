@@ -1,10 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import agent from '../../agent';
-import {
-    USER_LIST_UNLOAD,
-    USER_LIST_LOAD
-} from '../../constants/actionTypes';
 import {Dialog_Delete} from '../Dialog/';
 import { Link } from 'react-router';
 
@@ -68,7 +63,6 @@ class UserList extends React.Component {
     }
 
     componentWillUnmount() {
-
 
     }
 

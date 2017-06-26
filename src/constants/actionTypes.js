@@ -27,6 +27,7 @@ export const ASYNC_END = 'ASYNC_END';
 // Node
 export const NODE_LIST_UNLOAD = 'NODE_LIST_UNLOAD';
 export const NODE_LIST_LOAD = 'NODE_LIST_LOAD';
+export const NODE_LIST_REFRESH = 'NODE_LIST_REFRESH';
 
 
 

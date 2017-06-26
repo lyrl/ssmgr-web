@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import agent from '../../agent';
-import PageLoader from '../PageLoader';
 
 import {
     NODE_LIST_UNLOAD,
-    NODE_LIST_LOAD
+    NODE_LIST_LOAD,
+    NODE_LIST_REFRESH
 } from '../../constants/actionTypes';
 import NodeList from './NodeList';
 
@@ -15,16 +15,23 @@ const mapDispatchToProps = dispatch => ({
     onLoad: (payload) =>
         dispatch({type: NODE_LIST_LOAD, payload}),
     onUnload: () =>
-        dispatch({ type: NODE_LIST_UNLOAD })
+        dispatch({ type: NODE_LIST_UNLOAD }),
+    onRefresh: () =>
+        dispatch({type: NODE_LIST_REFRESH})
 });
 
 class NodeListContainer extends React.Component {
     constructor() {
         super();
+
+        this.onRefresh = this.onRefresh.bind(this);
     }
 
 
     componentWillReceiveProps(nextProps) {
+      if (nextProps.need_refresh) {
+        setTimeout(()=> this.props.onLoad(agent.Node.all()));
+      }
     }
 
     componentWillMount() {
@@ -37,9 +44,13 @@ class NodeListContainer extends React.Component {
     componentWillUnmount() {
     }
 
+    onRefresh() {
+        this.props.onRefresh();
+    }
+
     render() {
         return (
-            <NodeList nodes={this.props.nodes}/>
+            <NodeList nodes={this.props.nodes} onRefresh={this.onRefresh}/>
         );
     }
 }

@@ -1,10 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import agent from '../../agent';
-import {
-    USER_LIST_UNLOAD,
-    USER_LIST_LOAD
-} from '../../constants/actionTypes';
+import { Link } from 'react-router';
 
 const mapStateToProps = state => ({});
 
@@ -18,14 +14,13 @@ class NodeList extends React.Component {
 
 
     componentWillReceiveProps(nextProps) {
+      window.$('.js-basic-example').DataTable().destroy();
     }
 
     componentWillMount() {
     }
 
     componentDidUpdate() {
-        window.$('.js-basic-example').DataTable().destroy();
-
         window.$('.js-basic-example').DataTable({
             responsive: true,
             language: {
@@ -96,16 +91,18 @@ class NodeList extends React.Component {
                             <h2>
                                 节点管理
                             </h2>
+
+
+
                             <ul className="header-dropdown m-r--5">
                                 <li className="dropdown">
-                                    <a href="javascript:void(0);" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        <i className="material-icons">more_vert</i>
+
+                                    <Link to="/users/add" className="dropdown-toggle">
+                                        <i className="material-icons" alt="添加用户">add</i>
+                                    </Link>
+                                    <a href="javascript:void(0);" className="dropdown-toggle" onClick={this.props.onRefresh}>
+                                        <i className="material-icons"  alt="刷新">refresh</i>
                                     </a>
-                                    <ul className="dropdown-menu pull-right">
-                                        <li><a href="javascript:void(0);">Action</a></li>
-                                        <li><a href="javascript:void(0);">Another action</a></li>
-                                        <li><a href="javascript:void(0);">Something else here</a></li>
-                                    </ul>
                                 </li>
                             </ul>
                         </div>
@@ -117,7 +114,7 @@ class NodeList extends React.Component {
                                     <th>节点</th>
                                     <th>IP</th>
                                     <th>端口</th>
-                                    <th>秘钥</th>
+                                    <th>通讯秘钥</th>
                                     <th>默认加密方法</th>
                                     <th>操作</th>
                                 </tr>
@@ -128,7 +125,7 @@ class NodeList extends React.Component {
                                     <th>节点</th>
                                     <th>IP</th>
                                     <th>端口</th>
-                                    <th>秘钥</th>
+                                    <th>通讯秘钥</th>
                                     <th>默认加密方法</th>
                                     <th>操作</th>
                                 </tr>
