@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import agent from '../../../agent';
 import {
   USER_LIST_UNLOAD,
-  USER_LIST_LOAD
+  USER_LIST_LOAD,
+  USER_ADD_CANCLE,
+  USER_ADD
 } from '../../../constants/actionTypes';
 import AddUserForm from './AddUserForm';
 
@@ -11,9 +13,9 @@ const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
   onAddUser: (payload) =>
-      dispatch({type: "ADD_USER", payload}),
+      dispatch({type: USER_ADD, payload}),
   onCancel: () =>
-      dispatch({type: "CANCEL_ADD_USER"})
+      dispatch({type: USER_ADD_CANCLE})
 });
 
 class AddUserContainer extends React.Component {

@@ -3,6 +3,8 @@ import {LOGOUT} from '../constants/actionTypes';
 import { connect } from 'react-redux';
 import PageLoader from './PageLoader';
 
+import {APP_LOAD, REDIRECT} from '../constants/actionTypes';
+
 const mapStateToProps = state => ({
   appLoaded: state.common.appLoaded,
   appName: state.common.appName,
@@ -12,9 +14,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onLoad: (payload, token) =>
-    dispatch({ type: 'APP_LOAD', payload, token }),
+    dispatch({ type: APP_LOAD, payload, token }),
   onRedirect: () =>
-    dispatch({ type: 'REDIRECT' }),
+    dispatch({ type: REDIRECT }),
   onClickLogout: ev => {
     ev.preventDefault();
     dispatch({ type: LOGOUT })

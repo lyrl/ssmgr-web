@@ -5,6 +5,8 @@ import SideBar from "./Sidebar";
 import Notifier from '../../components/Notifier';
 import PageLoader from '../../components/PageLoader';
 
+import {HOME_PAGE_LOADED, HOME_PAGE_UNLOADED, LOGOUT} from '../../constants/actionTypes';
+
 
 const Promise = global.Promise;
 
@@ -18,12 +20,12 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     onLoad: (tab, payload) =>
-        dispatch({ type: 'HOME_PAGE_LOADED', tab, payload }),
+        dispatch({ type: HOME_PAGE_LOADED, tab, payload }),
     onUnload: () =>
-        dispatch({  type: 'HOME_PAGE_UNLOADED' }),
+        dispatch({  type: HOME_PAGE_UNLOADED }),
     onClickLogout: ev => {
         ev.preventDefault();
-        dispatch({ type: 'LOGOUT' })
+        dispatch({ type: LOGOUT })
     }
 });
 

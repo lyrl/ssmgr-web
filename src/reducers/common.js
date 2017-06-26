@@ -5,47 +5,50 @@ const defaultState = {
   loading: false
 };
 
+import {
+  USER_ADD,
+  USER_ADD_CANCLE,
+  USER_MODIFY_CANCEL,
+  USER_MODIFY,
+  APP_LOAD,
+  REDIRECT,
+  LOGOUT,
+  LOGIN,
+  REGISTER,
+  ASYNC_START,
+  ASYNC_END,
+} from '../constants/actionTypes';
+
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case 'APP_LOAD':
+    case APP_LOAD:
       return {
         ...state,
         token: action.token || null,
         appLoaded: true,
         currentUser: action.payload ? action.payload.user : null
       };
-    case 'REDIRECT':
+    case REDIRECT:
       return { ...state, redirectTo: null };
-    case 'LOGOUT':
+    case LOGOUT:
       return { ...state, redirectTo: '/', token: null, currentUser: null };
-    case 'ARTICLE_SUBMITTED':
-      const redirectUrl = `article/${action.payload.article.slug}`;
-      return { ...state, redirectTo: redirectUrl };
-    case 'SETTINGS_SAVED':
-      return {
-        ...state,
-        redirectTo: action.error ? null : '/',
-        currentUser: action.error ? null : action.payload.user
-      };
-    case 'LOGIN':
-    case 'REGISTER':
+    case LOGIN:
+    case REGISTER:
       return {
         ...state,
         redirectTo: action.error ? null : '/',
         token: action.error ? null : action.payload.user.token,
         currentUser: action.error ? null : action.payload.user
       };
-    case 'DELETE_ARTICLE':
-      return { ...state, redirectTo: '/' };
-    case 'ASYNC_START':
+    case ASYNC_START:
       return { ...state, loading: true};
-    case 'ASYNC_END':
+    case ASYNC_END:
       return { ...state, loading: false};
-    case 'CANCEL_ADD_USER':
-    case 'CANCEL_MODIFY_USER':
+    case USER_ADD_CANCLE:
+    case USER_MODIFY_CANCEL:
         return { ...state, redirectTo: '/users' };
-    case 'ADD_USER':
-    case 'MODIFY_USER':
+    case USER_ADD:
+    case USER_MODIFY:
       return { ...state, redirectTo: action.error ? null : '/users'}
   }
 

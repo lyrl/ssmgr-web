@@ -2,7 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import agent from '../../../agent';
 import EditUserForm from './EditUserForm';
-import {USER_EDIT_PAGE_LOAD} from '../../../constants/actionTypes';
+import {
+  USER_EDIT_PAGE_LOAD,
+  USER_MODIFY,
+  USER_MODIFY_CANCEL
+} from '../../../constants/actionTypes';
 
 const mapStateToProps = state => ({
     ...state.user
@@ -10,9 +14,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onModUser: (payload) =>
-      dispatch({type: "MODIFY_USER", payload}),
+      dispatch({type: USER_MODIFY, payload}),
   onCancel: () =>
-      dispatch({type: "CANCEL_MODIFY_USER"}),
+      dispatch({type: USER_MODIFY_CANCEL}),
   onLoad: (payload) =>
       dispatch({type: USER_EDIT_PAGE_LOAD, payload})
 });

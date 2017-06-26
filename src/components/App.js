@@ -1,6 +1,6 @@
 import React from 'react';
 import agent from '../agent';
-import {LOGOUT, NOTIFIER_NOTIFICATION} from '../constants/actionTypes';
+import {LOGOUT,REDIRECT,APP_LOAD, NOTIFIER_NOTIFICATION} from '../constants/actionTypes';
 import { connect } from 'react-redux';
 import MainLayout from '../layout/main';
 
@@ -13,9 +13,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onLoad: (payload, token) =>
-    dispatch({ type: 'APP_LOAD', payload, token }),
+    dispatch({ type: APP_LOAD, payload, token }),
   onRedirect: () =>
-    dispatch({ type: 'REDIRECT' }),
+    dispatch({ type: REDIRECT }),
   onMessage: (message) => {
       dispatch({type: NOTIFIER_NOTIFICATION, message})
   }

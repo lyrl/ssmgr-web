@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import agent from '../../agent';
 import {
     UPDATE_FIELD_AUTH,
-    REGISTER,
+    REDIRECT,
     REGISTER_PAGE_UNLOADED,
-    ERROR_NOTIFIED,
+    NOTIFIER_NOTIFIED,
     LOGIN_PAGE_UNLOADED,
     LOGIN
 } from '../../constants/actionTypes';
@@ -22,9 +22,9 @@ const mapDispatchToProps = dispatch => ({
     onUnload: () =>
         dispatch({ type: LOGIN_PAGE_UNLOADED }),
     onNotified: () =>
-        dispatch({ type: ERROR_NOTIFIED }),
+        dispatch({ type: NOTIFIER_NOTIFIED }),
     onRedirect: () =>
-        dispatch({ type: 'REDIRECT' })
+        dispatch({ type: REDIRECT })
 });
 
 class LoginLayout extends React.Component {

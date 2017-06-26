@@ -1,5 +1,5 @@
 import React from 'react';
-import {LOGOUT} from '../constants/actionTypes';
+import {NOTIFIED} from '../constants/actionTypes';
 import { connect } from 'react-redux';
 import PageLoader from './PageLoader';
 
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onNotified: () => {
-    dispatch({type: 'NOTIFIED'});
+    dispatch({type: NOTIFIED});
   }
 });
 

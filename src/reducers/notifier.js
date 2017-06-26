@@ -1,4 +1,4 @@
-import {USER_DELETE, NOTIFIER_NOTIFICATION} from '../constants/actionTypes';
+import {USER_DELETE, NOTIFIER_NOTIFICATION,NOTIFIER_NOTIFIED, USER_MODIFY} from '../constants/actionTypes';
 
 export default (state = {}, action) => {
 
@@ -31,7 +31,7 @@ export default (state = {}, action) => {
         noti: conf
       };
     }
-    case 'NOTIFIED':
+    case NOTIFIER_NOTIFIED:
       return {
         ...state, noti: null
       };
@@ -49,7 +49,7 @@ export default (state = {}, action) => {
         noti: conf
       }
     }
-    case 'MODIFY_USER': {
+    case USER_MODIFY: {
       let conf = {...defaltConf};
       conf.message = "密码修改成功！";
 
