@@ -1,9 +1,9 @@
 import agent from './agent';
-import {NOTIFIER_NOTIFICATION} from './constants/actionTypes';
+import {NOTIFIER_NOTIFICATION, ASYNC_START, ASYNC_END} from './constants/actionTypes';
 
 const promiseMiddleware = store => next => action => {
   if (isPromise(action.payload)) {
-    store.dispatch({ type: 'ASYNC_START', subtype: action.type });
+    store.dispatch({ type: ASYNC_START, subtype: action.type });
 
     action.payload.then(
       res => {
@@ -12,7 +12,7 @@ const promiseMiddleware = store => next => action => {
 
         store.dispatch(action);
 
-        store.dispatch({ type: 'ASYNC_END'});
+        store.dispatch({ type: ASYNC_END});
       },
       error => {
         console.log('eror: ' + JSON.stringify(error));
@@ -27,7 +27,7 @@ const promiseMiddleware = store => next => action => {
           store.dispatch({type: NOTIFIER_NOTIFICATION, message: `操作失败： ${error.response.status}, ${error.response.body.errors.message}`, notitype: 'bg-black'});
         }
 
-        store.dispatch({ type: 'ASYNC_END'});
+        store.dispatch({ type: ASYNC_END});
       }
     ).catch(err => {
     });

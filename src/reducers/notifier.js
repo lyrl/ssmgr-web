@@ -1,4 +1,9 @@
-import {USER_DELETE, NOTIFIER_NOTIFICATION,NOTIFIER_NOTIFIED, USER_MODIFY} from '../constants/actionTypes';
+import {
+  USER_DELETE,
+  NOTIFIER_NOTIFICATION,
+  NOTIFIER_NOTIFIED,
+  USER_MODIFY
+} from '../constants/actionTypes';
 
 export default (state = {}, action) => {
 

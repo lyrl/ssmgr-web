@@ -1,5 +1,5 @@
 import React from 'react';
-import {NOTIFIED} from '../constants/actionTypes';
+import {NOTIFIER_NOTIFIED} from '../constants/actionTypes';
 import { connect } from 'react-redux';
 import PageLoader from './PageLoader';
 
@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onNotified: () => {
-    dispatch({type: NOTIFIED});
+    dispatch({type: NOTIFIER_NOTIFIED});
   }
 });
 
