@@ -11,6 +11,7 @@ import UserListContainer from './components/UserList';
 import NodeListContainer from './components/NodeList';
 import AddUserContainer from './components/UserForm/AddUser';
 import EditUserContainer from './components/UserForm/EditUser';
+import AddNodeContainer from './components/NodeForm/AddNode';
 
 ReactDOM.render((
   <Provider store={store}>
@@ -20,8 +21,9 @@ ReactDOM.render((
         <IndexRoute component={Home} />
         <Route path="users" component={UserListContainer} />
         <Route path="users/add" component={AddUserContainer} />
-        <Route path="nodes" component={NodeListContainer} />
         <Route path="users/:user_name" component={EditUserContainer} />
+        <Route path="nodes" component={NodeListContainer} />
+        <Route path="nodes/add" component={AddNodeContainer} />
         {/*<Route path="@:username" component={Profile} />*/}
         {/*<Route path="@:username/favorites" component={ProfileFavorites} />*/}
         {/*<Route path="editor" component={Editor} />*/}

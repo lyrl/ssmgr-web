@@ -17,6 +17,8 @@ import {
   REGISTER,
   ASYNC_START,
   ASYNC_END,
+  NODE_ADD,
+  NODE_ADD_CANCEL
 } from '../constants/actionTypes';
 
 export default (state = defaultState, action) => {
@@ -49,7 +51,11 @@ export default (state = defaultState, action) => {
         return { ...state, redirectTo: '/users' };
     case USER_ADD:
     case USER_MODIFY:
-      return { ...state, redirectTo: action.error ? null : '/users'}
+      return { ...state, redirectTo: action.error ? null : '/users'};
+    case NODE_ADD:
+    case NODE_ADD_CANCEL:
+      return { ...state, redirectTo: action.error ? null : '/nodes'}
+
   }
 
   return state;

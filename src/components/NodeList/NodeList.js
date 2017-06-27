@@ -103,7 +103,7 @@ class NodeList extends React.Component {
                             <ul className="header-dropdown m-r--5">
                                 <li className="dropdown">
 
-                                    <Link to="/users/add" className="dropdown-toggle">
+                                    <Link to="/nodes/add" className="dropdown-toggle">
                                         <i className="material-icons" alt="添加节点">add</i>
                                     </Link>
                                     <a href="javascript:void(0);" className="dropdown-toggle" onClick={this.props.onRefresh}>

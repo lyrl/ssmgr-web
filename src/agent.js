@@ -70,6 +70,8 @@ const Node = {
       requests.get(`/nodes`),
   del: id =>
       requests.del(`/nodes/${id}`),
+  create: node =>
+      requests.post(`/nodes`, {node: node}),
 };
 
 export default {

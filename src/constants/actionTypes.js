@@ -29,6 +29,8 @@ export const NODE_LIST_UNLOAD = 'NODE_LIST_UNLOAD';
 export const NODE_LIST_LOAD = 'NODE_LIST_LOAD';
 export const NODE_LIST_REFRESH = 'NODE_LIST_REFRESH';
 export const NODE_DELETE = 'NODE_DELETE';
+export const NODE_ADD = 'NODE_ADD';
+export const NODE_ADD_CANCEL = 'NODE_ADD_CANCEL';
 
 
 

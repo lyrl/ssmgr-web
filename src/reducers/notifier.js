@@ -2,7 +2,9 @@ import {
   USER_DELETE,
   NOTIFIER_NOTIFICATION,
   NOTIFIER_NOTIFIED,
-  USER_MODIFY
+  USER_MODIFY,
+  NODE_ADD,
+  NODE_DELETE
 } from '../constants/actionTypes';
 
 export default (state = {}, action) => {
@@ -40,33 +42,38 @@ export default (state = {}, action) => {
       return {
         ...state, noti: null
       };
+    case NODE_DELETE:
     case USER_DELETE: {
-      let conf = {...defaltConf};
-      conf.message = "删除成功！";
-
-      if (action.error) {
-        conf.type = 'bg-red';
-        conf.message = action.payload.errors.message;
+      if (!action.error) {
+        let conf = {...defaltConf};
+        conf.message = "删除成功！";
+        return {
+          ...state,
+          noti: conf
+        }
       }
+      break;
+    }
+    case USER_MODIFY: {
+      let conf = {...defaltConf};
+      conf.message = "密码修改成功！";
 
       return {
         ...state,
         noti: conf
       }
     }
-    case USER_MODIFY: {
-      let conf = {...defaltConf};
-      conf.message = "密码修改成功！";
+    case NODE_ADD: {
+      if (!action.error) {
+        let conf = {...defaltConf};
+        conf.message = "节点添加成功！";
 
-      if (action.error) {
-        conf.type = 'bg-green';
-        conf.message = action.payload.errors.message;
+        return {
+          ...state,
+          noti: conf
+        }
       }
-
-      return {
-        ...state,
-        noti: conf
-      }
+      break;
     }
 
   }
