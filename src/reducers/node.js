@@ -1,7 +1,8 @@
 import {
   NODE_LIST_LOAD,
   NODE_LIST_UNLOAD,
-  NODE_LIST_REFRESH
+  NODE_LIST_REFRESH,
+  NODE_DELETE
 } from '../constants/actionTypes';
 
 export default (state = {need_refresh: false}, action) => {
@@ -17,6 +18,7 @@ export default (state = {need_refresh: false}, action) => {
             ...state,
             nodes: null
         };
+    case NODE_DELETE:
     case NODE_LIST_REFRESH:
       return {
         ...state,

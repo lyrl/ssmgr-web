@@ -3,21 +3,28 @@ import { connect } from 'react-redux';
 import agent from '../../agent';
 
 import {
-    NODE_LIST_UNLOAD,
-    NODE_LIST_LOAD,
-    NODE_LIST_REFRESH
+  NODE_LIST_UNLOAD,
+  NODE_LIST_LOAD,
+  NODE_LIST_REFRESH,
+  NODE_DELETE,
+  NOTIFIER_NOTIFICATION
 } from '../../constants/actionTypes';
 import NodeList from './NodeList';
 
 const mapStateToProps = state => ({...state.node});
 
 const mapDispatchToProps = dispatch => ({
-    onLoad: (payload) =>
-        dispatch({type: NODE_LIST_LOAD, payload}),
-    onUnload: () =>
-        dispatch({ type: NODE_LIST_UNLOAD }),
-    onRefresh: () =>
-        dispatch({type: NODE_LIST_REFRESH})
+  onLoad: (payload) =>
+      dispatch({type: NODE_LIST_LOAD, payload}),
+  onUnload: () =>
+      dispatch({ type: NODE_LIST_UNLOAD }),
+  onRefresh: () =>
+      dispatch({type: NODE_LIST_REFRESH}),
+  onDelNode: (payload) =>
+      dispatch({ type: NODE_DELETE, payload }),
+  onMessage: (message) => {
+    dispatch({type: NOTIFIER_NOTIFICATION, message})
+  },
 });
 
 class NodeListContainer extends React.Component {
@@ -25,6 +32,7 @@ class NodeListContainer extends React.Component {
         super();
 
         this.onRefresh = this.onRefresh.bind(this);
+        this.onDelNode = this.onDelNode.bind(this);
     }
 
 
@@ -48,9 +56,14 @@ class NodeListContainer extends React.Component {
         this.props.onRefresh();
     }
 
+    onDelNode(node) {
+        this.props.onDelNode(agent.Node.del(node.id));
+        this.props.onMessage(`正在删除节点：${node.node_name}!`);
+    }
+
     render() {
         return (
-            <NodeList nodes={this.props.nodes} onRefresh={this.onRefresh}/>
+            <NodeList nodes={this.props.nodes} onDelNode={this.onDelNode} onRefresh={this.onRefresh}/>
         );
     }
 }

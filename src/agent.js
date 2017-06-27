@@ -66,8 +66,10 @@ const User = {
 };
 
 const Node = {
-    all: () =>
-        requests.get(`/nodes`)
+  all: () =>
+      requests.get(`/nodes`),
+  del: id =>
+      requests.del(`/nodes/${id}`),
 };
 
 export default {

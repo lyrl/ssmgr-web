@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import {Dialog_Delete} from '../Dialog/';
+
 
 const mapStateToProps = state => ({});
 
@@ -74,7 +76,11 @@ class NodeList extends React.Component {
                     <td>{node.node_port}</td>
                     <td>{node.node_key}</td>
                     <td>{node.node_encry_mode}</td>
-                    <td></td>
+                    <td>
+                        <div className="col-sm-1 col-sm-offset-2">
+                            <Dialog_Delete title={`确认要删除节点: ${node.node_name} 吗？`} text=""  deleteHandler={()=>this.props.onDelNode(node)} />
+                        </div>
+                    </td>
                 </tr>
             });
 
@@ -98,7 +104,7 @@ class NodeList extends React.Component {
                                 <li className="dropdown">
 
                                     <Link to="/users/add" className="dropdown-toggle">
-                                        <i className="material-icons" alt="添加用户">add</i>
+                                        <i className="material-icons" alt="添加节点">add</i>
                                     </Link>
                                     <a href="javascript:void(0);" className="dropdown-toggle" onClick={this.props.onRefresh}>
                                         <i className="material-icons"  alt="刷新">refresh</i>
