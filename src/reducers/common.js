@@ -18,7 +18,9 @@ import {
   ASYNC_START,
   ASYNC_END,
   NODE_ADD,
-  NODE_ADD_CANCEL
+  NODE_ADD_CANCEL,
+  NODE_MODIFY,
+  NODE_MODIFY_CANCEL
 } from '../constants/actionTypes';
 
 export default (state = defaultState, action) => {
@@ -46,15 +48,18 @@ export default (state = defaultState, action) => {
       return { ...state, loading: true};
     case ASYNC_END:
       return { ...state, loading: false};
-    case USER_ADD_CANCLE:
-    case USER_MODIFY_CANCEL:
-        return { ...state, redirectTo: '/users' };
     case USER_ADD:
-    case USER_MODIFY:
+    case USER_ADD_CANCLE:
       return { ...state, redirectTo: action.error ? null : '/users'};
+    case USER_MODIFY:
+    case USER_MODIFY_CANCEL:
+      return { ...state, redirectTo: '/users' };
     case NODE_ADD:
     case NODE_ADD_CANCEL:
       return { ...state, redirectTo: action.error ? null : '/nodes'}
+    case NODE_MODIFY:
+    case NODE_MODIFY_CANCEL:
+      return { ...state, redirectTo: '/nodes'}
 
   }
 

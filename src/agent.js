@@ -72,6 +72,10 @@ const Node = {
       requests.del(`/nodes/${id}`),
   create: node =>
       requests.post(`/nodes`, {node: node}),
+  get: id =>
+      requests.get(`/nodes/${id}`),
+  update: node =>
+      requests.put(`/nodes/${node.id}`, {node: node}),
 };
 
 export default {

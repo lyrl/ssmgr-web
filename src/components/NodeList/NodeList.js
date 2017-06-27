@@ -77,8 +77,16 @@ class NodeList extends React.Component {
                     <td>{node.node_key}</td>
                     <td>{node.node_encry_mode}</td>
                     <td>
-                        <div className="col-sm-1 col-sm-offset-2">
-                            <Dialog_Delete title={`确认要删除节点: ${node.node_name} 吗？`} text=""  deleteHandler={()=>this.props.onDelNode(node)} />
+                        <div className="row">
+                            <div className="col-sm-1">
+                                <Link to={`/nodes/${node.id}`} >
+                                    <button className="btn btn-primary waves-effect">修改</button>
+                                </Link>
+                            </div>
+
+                            <div className="col-sm-1 col-sm-offset-2">
+                                <Dialog_Delete title={`确认要删除节点: ${node.node_name} 吗？`} text=""  deleteHandler={()=>this.props.onDelNode(node)} />
+                            </div>
                         </div>
                     </td>
                 </tr>

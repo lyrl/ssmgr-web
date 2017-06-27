@@ -1,89 +1,116 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import agent from '../../../agent';
-import EditNodeForm from './EditNodeForm';
 import {
-  USER_EDIT_PAGE_LOAD,
-  USER_MODIFY,
-  USER_MODIFY_CANCEL
+  NODE_ADD_CANCEL,
+  NODE_ADD,
+  NODE_MODIFY,
+  NODE_MODIFY_CANCEL,
+  NODE_MODIFY_PAGE_LOAD
 } from '../../../constants/actionTypes';
+import EditNodeForm from './EditNodeForm';
 
 const mapStateToProps = state => ({
-    ...state.user
+    ...state.node
 });
 
 const mapDispatchToProps = dispatch => ({
-  onModUser: (payload) =>
-      dispatch({type: USER_MODIFY, payload}),
+  onEditNode: (payload) =>
+      dispatch({type: NODE_MODIFY, payload}),
   onCancel: () =>
-      dispatch({type: USER_MODIFY_CANCEL}),
+      dispatch({type: NODE_MODIFY_CANCEL}),
   onLoad: (payload) =>
-      dispatch({type: USER_EDIT_PAGE_LOAD, payload})
+    dispatch({type: NODE_MODIFY_PAGE_LOAD, payload})
 });
 
 class EditNodeContainer extends React.Component {
   constructor(props) {
     super(props);
-
-
-
     this.state = {
-      user_name: '',
-      password: '',
-      email: ''
+      node: {
+        node_name: '',
+        node_ip: '',
+        node_port: '',
+        node_key: '',
+        node_encry_mode: ''
+      }
     };
 
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleClickCancel = this.handleClickCancel.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onNodeNameChange = this.onNodeNameChange.bind(this);
+    this.onNodeIpChange = this.onNodeIpChange.bind(this);
+    this.onNodePortChange = this.onNodePortChange.bind(this);
+    this.onNodeKeyChange = this.onNodeKeyChange.bind(this);
+    this.onNodeEncryModeChange = this.onNodeEncryModeChange.bind(this);
+    this.onCancel = this.onCancel.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.user){
-      this.setState({
-        ...this.state,
-        user_name: nextProps.user.user_name,
-        email: nextProps.user.email
-      });
+    if (nextProps.node) {
+      this.setState({node: nextProps.node});
     }
   }
 
   componentWillMount() {
-    let user_name = this.props.params.user_name;
-
-    this.props.onLoad(agent.User.get(user_name));
+    this.props.onLoad(agent.Node.get(this.props.params.id));
   }
 
   componentDidMount() {
   }
 
-  handlePasswordChange(ev) {
+  onNodeNameChange(ev) {
+    this.setState({node: {...this.state.node, node_name: ev.target.value}})
+  }
+
+  onNodeIpChange(ev) {
     ev.preventDefault();
-    this.setState({...this.state, password: ev.target.value})
+    this.setState({node: {...this.state.node, node_ip: ev.target.value}})
+
+  }
+
+  onNodePortChange(ev) {
+    ev.preventDefault();
+    this.setState({node: {...this.state.node, node_port: ev.target.value}})
+
   }
 
 
-  handleClickCancel(ev) {
+  onNodeKeyChange(ev) {
+    ev.preventDefault();
+    this.setState({node: {...this.state.node, node_key: ev.target.value}})
+
+  }
+
+  onNodeEncryModeChange(ev) {
+    ev.preventDefault();
+    this.setState({node: {...this.state.node, node_encry_mode: ev.target.value}})
+
+  }
+
+  onCancel(ev) {
     ev.preventDefault();
     this.props.onCancel();
   }
 
-  handleSubmit() {
-    this.props.onModUser(agent.User.update(this.state.user_name,this.state.password));
+  onSubmit() {
+    this.props.onEditNode(agent.Node.update(this.state.node));
   }
 
   render() {
     return (
         <EditNodeForm
-            onCancel={this.handleClickCancel}
+            onCancel={this.onCancel}
 
-            onChangePassword={this.handlePasswordChange}
+            onNodeNameChange={this.onNodeNameChange}
+            onNodeIpChange={this.onNodeIpChange}
+            onNodePortChange={this.onNodePortChange}
 
-            user_name={this.state.user_name}
-            password={this.state.password}
-            email={this.state.email}
+            onNodeKeyChange={this.onNodeKeyChange}
+            onNodeEncryModeChange={this.onNodeEncryModeChange}
 
-            onSubmit={this.handleSubmit}
+            node={this.state.node}
+
+            onSubmit={this.onSubmit}
         />
     );
   }
