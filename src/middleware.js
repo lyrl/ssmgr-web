@@ -19,17 +19,18 @@ const promiseMiddleware = store => next => action => {
         action.error = true;
 
         if (typeof error.response === 'undefined') {
-          store.dispatch({type: NOTIFIER_NOTIFICATION, message: '网络问题，请检查网络连接！', notitype: 'bg-black'});
+          store.dispatch({type: NOTIFIER_NOTIFICATION, message: '网络问题，请检查网络连接！', notitype: 'bg-red'});
         } else {
           action.payload = error.response.body;
           store.dispatch(action);
 
-          store.dispatch({type: NOTIFIER_NOTIFICATION, message: `操作失败： ${error.response.status}, ${error.response.body.errors.message}`, notitype: 'bg-black'});
+          store.dispatch({type: NOTIFIER_NOTIFICATION, message: `操作失败： ${error.response.status}, ${error.response.body.errors.message}`, notitype: 'bg-red'});
         }
 
         store.dispatch({ type: ASYNC_END});
       }
     ).catch(err => {
+      // store.dispatch({ type: ASYNC_END});
     });
 
     return;

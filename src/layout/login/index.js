@@ -9,6 +9,7 @@ import {
     LOGIN_PAGE_UNLOADED,
     LOGIN
 } from '../../constants/actionTypes';
+import Notifier from '../../components/Notifier';
 
 const mapStateToProps = state => ({ ...state.auth, redirectTo: state.common.redirectTo, currentUser: state.common.currentUser });
 
@@ -30,6 +31,7 @@ const mapDispatchToProps = dispatch => ({
 class LoginLayout extends React.Component {
     constructor() {
         super();
+
         this.changeUserName = ev => this.props.onChangechangeUserName(ev.target.value);
         this.changePassword = ev => this.props.onChangePassword(ev.target.value);
         this.submitForm = (user_name, password) => ev => {
@@ -40,22 +42,6 @@ class LoginLayout extends React.Component {
 
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.errors) {
-
-            window.$.notify(nextProps.errors.message, {
-                animate: {
-                    enter: 'animated flipInY',
-                    exit: 'animated flipOutX'
-                },
-                type: 'danger',
-                placement: {
-                    from: "top",
-                    align: "center"
-                },
-            });
-            this.props.onNotified();
-        }
-
         if (nextProps.redirectTo) {
             this.context.router.replace(nextProps.redirectTo);
             this.props.onRedirect();
@@ -84,6 +70,7 @@ class LoginLayout extends React.Component {
         const password = this.props.password;
         return (
                 <div className="login-page ls-closed">
+                    <Notifier />
                     <div className="login-box">
                         <div className="logo">
                             <a href="javascript:void(0);">SSMGR</a>
