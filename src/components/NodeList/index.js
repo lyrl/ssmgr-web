@@ -38,12 +38,12 @@ class NodeListContainer extends React.Component {
 
     componentWillReceiveProps(nextProps) {
       if (nextProps.need_refresh) {
-        setTimeout(()=> this.props.onLoad(agent.Node.all()));
+        setTimeout(()=> this.props.onLoad(agent.Node.all(true)));
       }
     }
 
     componentWillMount() {
-        this.props.onLoad(agent.Node.all())
+        this.props.onLoad(agent.Node.all(true))
     }
 
     componentDidMount() {

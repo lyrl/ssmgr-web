@@ -66,8 +66,8 @@ const User = {
 };
 
 const Node = {
-  all: () =>
-      requests.get(`/nodes`),
+  all: (countUser) =>
+      requests.get(`/nodes?countUser=${countUser}`),
   del: id =>
       requests.del(`/nodes/${id}`),
   create: node =>

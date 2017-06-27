@@ -76,6 +76,15 @@ class NodeList extends React.Component {
                     <td>{node.node_port}</td>
                     <td>{node.node_key}</td>
                     <td>{node.node_encry_mode}</td>
+                    {/*<td>{`${node.user_count}/${node.max_user}`}</td>*/}
+                    <td>
+                        <div className="progress">
+                            <div className="progress-bar  bg-cyan progress-bar-striped active" role="progressbar" aria-valuenow={node.user_count} aria-valuemin="0" aria-valuemax={node.max_user} style={{width: `${node.user_count / node.max_user * 100}%`}}>
+                                <label className="col-black  align-center">{`${node.user_count}/${node.max_user}`}</label>
+                                {/*<label className="col-black  align-center">{`${node.user_count}/${node.max_user}`}</label>*/}
+                            </div>
+                        </div>
+                    </td>
                     <td>
                         <div className="row">
                             <div className="col-sm-1">
@@ -130,6 +139,7 @@ class NodeList extends React.Component {
                                     <th>端口</th>
                                     <th>通讯秘钥</th>
                                     <th>默认加密方法</th>
+                                    <th>负载</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
@@ -141,6 +151,7 @@ class NodeList extends React.Component {
                                     <th>端口</th>
                                     <th>通讯秘钥</th>
                                     <th>默认加密方法</th>
+                                    <th>负载</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>

@@ -41,6 +41,7 @@ class EditNodeContainer extends React.Component {
     this.onNodePortChange = this.onNodePortChange.bind(this);
     this.onNodeKeyChange = this.onNodeKeyChange.bind(this);
     this.onNodeEncryModeChange = this.onNodeEncryModeChange.bind(this);
+    this.onMaxUserChange = this.onMaxUserChange.bind(this);
     this.onCancel = this.onCancel.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -84,7 +85,11 @@ class EditNodeContainer extends React.Component {
   onNodeEncryModeChange(ev) {
     ev.preventDefault();
     this.setState({node: {...this.state.node, node_encry_mode: ev.target.value}})
+  }
 
+  onMaxUserChange(ev) {
+    ev.preventDefault();
+    this.setState({node: {...this.state.node, max_user: ev.target.value}})
   }
 
   onCancel(ev) {
@@ -107,6 +112,7 @@ class EditNodeContainer extends React.Component {
 
             onNodeKeyChange={this.onNodeKeyChange}
             onNodeEncryModeChange={this.onNodeEncryModeChange}
+            onMaxUserChange={this.onMaxUserChange}
 
             node={this.state.node}
 

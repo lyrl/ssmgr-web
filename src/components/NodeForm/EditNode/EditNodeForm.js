@@ -43,6 +43,9 @@ class EditNodeForm extends React.Component {
           },
           'node_encry_mode': {
             required: true
+          },
+          'max_user': {
+            required: true
           }
         },
         highlight: function (input) {
@@ -93,6 +96,13 @@ class EditNodeForm extends React.Component {
                          <div className="form-line">
                              <input  onChange={this.props.onNodeKeyChange} value={this.props.node.node_key}  type="text" id="node_key" name="node_key" className="form-control "  placeholder="通讯密钥"    />
                          </div>
+                     </div>
+
+                     <label htmlFor="email">最大承载人数</label>
+                     <div className="form-group">
+                       <div className="form-line">
+                         <input  onChange={this.props.onMaxUserChange} value={this.props.node.max_user}  type="text" id="max_user" name="max_user" className="form-control "  placeholder="最大承载人数"    />
+                       </div>
                      </div>
 
                      <label htmlFor="email">默认加密方式</label>
