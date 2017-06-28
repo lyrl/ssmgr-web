@@ -69,6 +69,11 @@ class NodeUserList extends React.Component {
                             <i className="material-icons">refresh</i>
                         </a>
                     </li>
+                    <li>
+                        <a href="javascript:void(0);" onClick={this.props.onRefresh}>
+                            <i className="material-icons">add</i>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div className="body">
