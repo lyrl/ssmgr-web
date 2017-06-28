@@ -76,6 +76,8 @@ const Node = {
       requests.get(`/nodes/${id}`),
   update: node =>
       requests.put(`/nodes/${node.id}`, {node: node}),
+  users: nodeid =>
+      requests.get(`/nodes/${nodeid}/users`)
 };
 
 export default {

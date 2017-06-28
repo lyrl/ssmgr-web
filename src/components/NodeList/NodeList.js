@@ -98,7 +98,7 @@ class NodeList extends React.Component {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to={`/nodes/${node.id}`} >
+                                    <Link to={`@${node.id}/users`} >
                                         节点用户管理
                                     </Link>
                                 </li>
