@@ -83,16 +83,23 @@ class UserList extends React.Component {
                     <td>0</td>
                     <td>0</td>
                     <td>
-                        <div className="row">
-                            <div className="col-sm-1">
-                                <Link to={`/users/${user.user_name}`} >
-                                    <button className="btn btn-primary waves-effect">修改</button>
-                                </Link>
-                            </div>
 
-                            <div className="col-sm-1 col-sm-offset-2">
-                                <Dialog_Delete title={`确认要删除用户: ${user.user_name} 吗？`} text=""  deleteHandler={() => {this.deleteUser(user)}} />
-                            </div>
+                        <div className="btn-group ">
+                            <button type="button" className="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i className="material-icons">settings</i>
+                                <span>操作</span>
+                            </button>
+                            <ul className="dropdown-menu">
+                                <li>
+                                    <Link to={`/users/${user.user_name}`} >
+                                        修改
+                                    </Link>
+                                </li>
+                                <li role="separator" className="divider"></li>
+                                <li>
+                                    <Dialog_Delete title={`确认要删除用户: ${user.user_name} 吗？`} text=""  deleteHandler={() => {this.deleteUser(user)}} />
+                                </li>
+                            </ul>
                         </div>
                     </td>
                 </tr>

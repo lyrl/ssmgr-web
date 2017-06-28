@@ -31,9 +31,7 @@ class Dialog_Delte extends React.Component {
 
   render() {
     return (
-        <div >
-            <button className="btn btn-danger waves-effect" datatype="confirm" onClick={this.onDelete}>删除</button>
-        </div>
+            <a href="javascript:void(0);" className="col-red" datatype="confirm" onClick={this.onDelete}>删除</a>
     );
   }
 }

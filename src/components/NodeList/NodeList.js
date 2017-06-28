@@ -86,17 +86,29 @@ class NodeList extends React.Component {
                         </div>
                     </td>
                     <td>
-                        <div className="row">
-                            <div className="col-sm-1">
-                                <Link to={`/nodes/${node.id}`} >
-                                    <button className="btn btn-primary waves-effect">修改</button>
-                                </Link>
-                            </div>
-
-                            <div className="col-sm-1 col-sm-offset-2">
-                                <Dialog_Delete title={`确认要删除节点: ${node.node_name} 吗？`} text=""  deleteHandler={()=>this.props.onDelNode(node)} />
-                            </div>
+                        <div className="btn-group ">
+                            <button type="button" className="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i className="material-icons">settings</i>
+                                <span>操作</span>
+                            </button>
+                            <ul className="dropdown-menu">
+                                <li>
+                                    <Link to={`/nodes/${node.id}`} >
+                                        修改
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to={`/nodes/${node.id}`} >
+                                        节点用户管理
+                                    </Link>
+                                </li>
+                                <li role="separator" className="divider"></li>
+                                <li>
+                                    <Dialog_Delete title={`确认要删除节点: ${node.node_name} 吗？`} text=""  deleteHandler={()=>this.props.onDelNode(node)} />
+                                </li>
+                            </ul>
                         </div>
+
                     </td>
                 </tr>
             });
