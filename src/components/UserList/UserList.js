@@ -85,9 +85,9 @@ class UserList extends React.Component {
                     <td>
 
                         <div className="btn-group ">
-                            <button type="button" className="btn btn-primary" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" className="btn btn-primary btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i className="material-icons">settings</i>
-                                <span>操作</span>
+                                <span style={{verticalAlign: 'text-bottom'}}>操作</span>
                             </button>
                             <ul className="dropdown-menu">
                                 <li>

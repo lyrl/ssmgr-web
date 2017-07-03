@@ -5,6 +5,7 @@ import {Dialog_Delete} from '../Dialog/';
 import NodeUserStateLabel from './NodeUserStateLabel';
 import ByteLabel from './ByteLabel';
 import Actions from './Actions';
+import NodeUserAddModal from './NodeUserAddModal';
 
 
 const mapStateToProps = state => ({});
@@ -18,9 +19,6 @@ class NodeUserList extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-    }
-
-    componentWillMount() {
     }
 
     componentDidUpdate() {
@@ -64,16 +62,17 @@ class NodeUserList extends React.Component {
                   </small>
                 </h2>
                 <ul className="header-dropdown m-r--5">
-                    <li>
-                        <a href="javascript:void(0);" onClick={this.props.onRefresh}>
-                            <i className="material-icons">refresh</i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" onClick={this.props.onRefresh}>
-                            <i className="material-icons">add</i>
-                        </a>
-                    </li>
+                  <li>
+                    <NodeUserAddModal>
+                      <i className="material-icons">add</i>
+                    </NodeUserAddModal>
+                  </li>
+
+                  <li>
+                    <a href="javascript:void(0);" onClick={this.props.onRefresh}>
+                      <i className="material-icons">refresh</i>
+                    </a>
+                  </li>
                 </ul>
             </div>
             <div className="body">
@@ -96,9 +95,9 @@ class NodeUserList extends React.Component {
 
             </div>
         </div>);
+      } else {
+        return null;
       }
-
-      return null;
     }
 }
 

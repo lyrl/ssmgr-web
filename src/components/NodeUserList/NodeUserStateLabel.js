@@ -14,7 +14,7 @@ var NodeUserStateLabel = props => {
       text = '运行中';
       break;
     case 'suspend':
-      color = 'bg-yellow';
+      color = 'bg-orange';
       text = '已暂停';
       break;
     case 'freezed':

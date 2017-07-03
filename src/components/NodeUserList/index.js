@@ -34,7 +34,7 @@ class NodeUserListContainer extends React.Component {
 
     componentWillReceiveProps(nextProps) {
       if (nextProps.need_refresh) {
-        setTimeout(()=> this.componentWillMount());
+        setTimeout(()=> this.componentWillMount(), 500);
       }
     }
 

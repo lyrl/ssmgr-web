@@ -77,7 +77,10 @@ const Node = {
   update: node =>
       requests.put(`/nodes/${node.id}`, {node: node}),
   users: nodeid =>
-      requests.get(`/nodes/${nodeid}/users`)
+      requests.get(`/nodes/${nodeid}/users`),
+  addUser: (node, nodeuser) => {
+      requests.post(`/nodes/${node.id}/users`, {nodeuser: nodeuser})
+  }
 };
 
 export default {

@@ -1,8 +1,10 @@
 import {
-  USER_LIST_UNLOAD,
+  NODE_USER_ADD_MODAL_LOAD,
+  NODE_USER_ADD_MODAL_UNLOAD,
   NODE_USER_LIST_LOAD,
   NODE_USER_LIST_UNLOAD,
-  NODE_USER_LIST_REFRESH
+  NODE_USER_LIST_REFRESH,
+  NODE_USER_ADD
 } from '../constants/actionTypes';
 
 export default (state = {}, action) => {
@@ -12,7 +14,12 @@ export default (state = {}, action) => {
     case NODE_USER_LIST_UNLOAD:
       return {...state, node: null};
     case NODE_USER_LIST_REFRESH:
-      return {...state, need_refresh: true}
+    case NODE_USER_ADD:
+      return {...state, need_refresh: true};
+    case NODE_USER_ADD_MODAL_LOAD:
+      return {...state, users: action.payload.users};
+    case NODE_USER_ADD_MODAL_UNLOAD:
+      return {...state, users: null};
   }
 
   return state;

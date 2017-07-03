@@ -4,7 +4,8 @@ import {
   NOTIFIER_NOTIFIED,
   USER_MODIFY,
   NODE_ADD,
-  NODE_DELETE
+  NODE_DELETE,
+  NODE_USER_ADD
 } from '../constants/actionTypes';
 
 export default (state = {}, action) => {
@@ -67,6 +68,18 @@ export default (state = {}, action) => {
       if (!action.error) {
         let conf = {...defaltConf};
         conf.message = "节点添加成功！";
+
+        return {
+          ...state,
+          noti: conf
+        }
+      }
+      break;
+    }
+    case NODE_USER_ADD: {
+      if (!action.error) {
+        let conf = {...defaltConf};
+        conf.message = "节点用户添加成功！";
 
         return {
           ...state,
