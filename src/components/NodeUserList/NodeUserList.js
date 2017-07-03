@@ -46,7 +46,7 @@ class NodeUserList extends React.Component {
             <td><ByteLabel bytes={user.userNodes.traffic_total} /></td>
             <td><NodeUserStateLabel status={user.userNodes.status} /></td>
             {/*<td><span className="label bg-blue-grey">{user.userNodes.status}</span></td>*/}
-            <td><Actions user={user} /></td>
+            <td><Actions user={user} node={node} /></td>
           </tr>
         });
 

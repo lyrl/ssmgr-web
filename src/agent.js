@@ -78,10 +78,11 @@ const Node = {
       requests.put(`/nodes/${node.id}`, {node: node}),
   users: nodeid =>
       requests.get(`/nodes/${nodeid}/users`),
-  addUser: (node, nodeuser) => {
-      requests.post(`/nodes/${node.id}/users`, {nodeuser: nodeuser})
-  }
-};
+  addUser: (node, nodeuser) =>
+      requests.post(`/nodes/${node.id}/users`, {nodeuser: nodeuser}),
+  delUser: (node, user) =>
+      requests.del(`/nodes/${node.id}/users/${user.id}`)
+ };
 
 export default {
   Auth,
