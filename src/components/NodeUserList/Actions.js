@@ -30,7 +30,7 @@ class Actions extends React.Component {
       delete: {
         name: "删除",
         title: "节点用户删除",
-        text: "你确认要从节点上删除这个用户吗？",
+        text: `你确认要从节点 ${props.node.node_name} 上用户 ${props.user.user_name} 吗？`,
         fn: () => this.props.onDelNodeUser(agent.Node.delUser(props.node, props.user))
       },
       sync: {
