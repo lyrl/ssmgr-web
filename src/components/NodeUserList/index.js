@@ -56,6 +56,10 @@ class NodeUserListContainer extends React.Component {
       this.props.onUnload();
     }
 
+    componentDidMount() {
+      setInterval(this.onRefresh, 1000*60);
+    }
+
 
     render() {
         return (
