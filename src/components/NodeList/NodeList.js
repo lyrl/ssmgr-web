@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import {Dialog_Delete} from '../Dialog/';
+import TimeAgoLabel from './TimeAgoLabel';
 
 
 const mapStateToProps = state => ({});
@@ -86,6 +87,9 @@ class NodeList extends React.Component {
                         </div>
                     </td>
                     <td>
+                        <TimeAgoLabel time={node.last_heartbeat}/>
+                    </td>
+                    <td>
                         <div className="btn-group ">
                             <button type="button" className="btn btn-primary btn-xs" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i className="material-icons">settings</i>
@@ -152,6 +156,7 @@ class NodeList extends React.Component {
                                     <th>通讯秘钥</th>
                                     <th>默认加密方法</th>
                                     <th>负载</th>
+                                    <th>最近通讯</th>
                                     <th>操作</th>
                                 </tr>
                                 </thead>
