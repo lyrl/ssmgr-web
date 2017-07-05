@@ -27,13 +27,27 @@ class Ping extends React.Component {
   componentWillMount() {
     this.setState({...this.state, startTime: new Date().getTime()});
 
-    agent.Ping.ping(this.props.url).then(res => {
-      this.setState({...this.state, endTime: new Date().getTime()});
-      console.log('ping ' + this.props.url + ' success result: ' + res + '!');
-    }).catch(error => {
-      this.setState({...this.state, failed: true});
-      console.log('ping ' + this.props.url + ' error!');
+    http.get(this.props.url, res => {
+
+      res.on('end', () => {
+        this.setState({...this.state, endTime: new Date().getTime()});
+        console.log('ping ' + this.props.url + ' success result: ' + res + '!');
+      });
+    }).on('error', e => {
+      if (!this.state.endTime) {
+        this.setState({...this.state, failed: true});
+        console.log('ping ' + this.props.url + ' error!' + JSON.stringify(e));
+      }
     });
+
+
+    // agent.Ping.ping(this.props.url).then(res => {
+    //   this.setState({...this.state, endTime: new Date().getTime()});
+    //   console.log('ping ' + this.props.url + ' success result: ' + res + '!');
+    // }).catch(error => {
+    //   this.setState({...this.state, failed: true});
+    //   console.log('ping ' + this.props.url + ' error!');
+    // });
   }
 
   render() {
