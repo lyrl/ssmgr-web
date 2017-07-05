@@ -72,7 +72,11 @@ class NodeList extends React.Component {
             nodes = this.props.nodes.map(node => {
                 return <tr>
                     <td>{node.id}</td>
-                    <td>{node.node_name}</td>
+                    <td>
+                        <Link to={`@${node.id}/users`} >
+                          {node.node_name}
+                        </Link>
+                    </td>
                     <td>{node.node_ip}</td>
                     <td>{node.node_port}</td>
                     <td>{node.node_key}</td>
