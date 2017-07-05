@@ -47,6 +47,7 @@ class NodeListContainer extends React.Component {
     }
 
     componentDidMount() {
+      setInterval(this.onRefresh, 1000*60);
     }
 
     componentWillUnmount() {

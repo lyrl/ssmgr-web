@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import {Dialog_Delete} from '../Dialog/';
 import TimeAgoLabel from './TimeAgoLabel';
+import Ping from '../Ping';
 
 
 const mapStateToProps = state => ({});
@@ -90,6 +91,7 @@ class NodeList extends React.Component {
                             </div>
                         </div>
                     </td>
+                    <td><Ping url={'http://'+node.node_ip+':'+node.node_port+'/api/ping'}/> </td>
                     <td>
                         <TimeAgoLabel time={node.last_heartbeat}/>
                     </td>
@@ -160,6 +162,7 @@ class NodeList extends React.Component {
                                     <th>通讯秘钥</th>
                                     <th>默认加密方法</th>
                                     <th>负载</th>
+                                    <th>Ping</th>
                                     <th>最近通讯</th>
                                     <th>操作</th>
                                 </tr>
@@ -173,6 +176,8 @@ class NodeList extends React.Component {
                                     <th>通讯秘钥</th>
                                     <th>默认加密方法</th>
                                     <th>负载</th>
+                                    <th>Ping</th>
+                                    <th>最近通讯</th>
                                     <th>操作</th>
                                 </tr>
                                 </tfoot>

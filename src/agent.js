@@ -5,6 +5,7 @@ import _superagent from 'superagent';
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
+// const API_ROOT = 'http://127.0.0.1:3001/api';
 const API_ROOT = 'http://103.45.2.131:3001/api';
 
 const responseBody = res => res.body;
@@ -29,12 +30,20 @@ const requests = {
   post: (url, body) =>
     superagent.post(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody),
   put: (url, body) =>
-    superagent.put(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody)
+    superagent.put(`${API_ROOT}${url}`, body).use(tokenPlugin).then(responseBody),
+  custom_get: url =>
+    superagent.get(url)
 };
 
 const limit = (count, p) => `limit=${count}&offset=${p ? p * count : 0}`;
 const encode = encodeURIComponent;
 const omitSlug = article => Object.assign({}, article, { slug: undefined });
+
+
+const Ping = {
+  ping: (url) =>
+      requests.custom_get(url),
+};
 
 const Auth = {
   current: () =>
@@ -88,5 +97,6 @@ export default {
   Auth,
   User,
   Node,
+  Ping,
   setToken: _token => { token = _token; }
 };
