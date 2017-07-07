@@ -9,6 +9,7 @@ export default (state = {}, action) => {
     case HOME_PAGE_LOADED:
       return {
         ...state,
+        statistics: action.payload.statistics
       };
     case HOME_PAGE_UNLOADED:
       return {};

@@ -99,10 +99,18 @@ const Node = {
       requests.get(`/nodes/${node.id}/users/${user.id}/sync`)
  };
 
+const DashBoard = {
+  statistics: () =>
+      requests.get(`/comm/statistics`),
+ };
+
+
+
 export default {
   Auth,
   User,
   Node,
   Ping,
+  DashBoard,
   setToken: _token => { token = _token; }
 };
