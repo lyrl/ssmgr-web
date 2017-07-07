@@ -6,7 +6,9 @@ import {
   NODE_ADD,
   NODE_DELETE,
   NODE_USER_ADD,
-  NODE_USER_DELETE
+  NODE_USER_DELETE,
+  NODE_USER_SUSPEND,
+  NODE_USER_RECOVER
 } from '../constants/actionTypes';
 
 export default (state = {}, action) => {
@@ -93,6 +95,30 @@ export default (state = {}, action) => {
       if (!action.error) {
         let conf = {...defaltConf};
         conf.message = "节点用户删除成功！";
+
+        return {
+          ...state,
+          noti: conf
+        }
+      }
+      break;
+    }
+    case NODE_USER_SUSPEND: {
+      if (!action.error) {
+        let conf = {...defaltConf};
+        conf.message = "节点用户服务暂停成功！";
+
+        return {
+          ...state,
+          noti: conf
+        }
+      }
+      break;
+    }
+    case NODE_USER_RECOVER: {
+      if (!action.error) {
+        let conf = {...defaltConf};
+        conf.message = "节点用户服务恢复成功！";
 
         return {
           ...state,

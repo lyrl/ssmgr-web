@@ -10,7 +10,10 @@ import {
   NODE_USER_LIST_UNLOAD,
   NODE_USER_LIST_REFRESH,
   NOTIFIER_NOTIFICATION,
-  NODE_USER_DELETE
+  NODE_USER_DELETE,
+  NODE_USER_SYNC,
+  NODE_USER_RECOVER,
+  NODE_USER_SUSPEND
 } from '../../constants/actionTypes';
 
 const mapStateToProps = state => ({
@@ -18,7 +21,13 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   onDelNodeUser: (payload) =>
-      dispatch({type: NODE_USER_DELETE})
+      dispatch({type: NODE_USER_DELETE, payload}),
+  onSyncUser: (payload) =>
+      dispatch({type: NODE_USER_SYNC, payload}),
+  onSuspendUser: (payload) =>
+      dispatch({type: NODE_USER_SUSPEND, payload}),
+  onRecoverUser: (payload) =>
+      dispatch({type: NODE_USER_RECOVER, payload}),
 });
 
 
@@ -37,50 +46,22 @@ class Actions extends React.Component {
         name: "同步",
         title: "节点用户删除",
         text: "你确认要将用户同步到节点吗？",
-        fn: (node, user) => {}
+        fn: () => this.props.onSyncUser(agent.Node.syncUser(props.node, props.user))
       },
       suspend: {
         name: "暂停",
-        title: "节点用户暂停",
-        text: "你确认要暂停节点上这个用户吗？",
-        fn: (node, user) => {}
-      },
-      freeze: {
-        name: "冻结",
-        title: "节点用户冻结",
-        text: "你确认要从冻结节点上这个用户吗？",
-        fn: (node, user) => {}
+        title: "节点用户服务暂停",
+        text: `你确认要暂停节点上用户 ${props.user.user_name} 吗？`,
+        fn: () => this.props.onSuspendUser(agent.Node.suspendUser(props.node, props.user))
       },
       recover: {
         name: "恢复",
         title: "节点用户恢复",
         text: "你确认要恢复节点上这个用户吗？",
-        fn: (node, user) => {}
+        fn: () => this.props.onRecoverUser(agent.Node.recoverUser(props.node, props.user))
       }
     };
 
-    this.menus = [];
-
-    let status = props.user.userNodes.status;
-
-    switch (status) {
-      case 'wait_for_sync':
-        this.menus.push(this.actions['sync']);
-        break;
-      case 'working':
-        this.menus.push(this.actions['suspend']);
-        this.menus.push(this.actions['freeze']);
-        break;
-      case 'suspend':
-        this.menus.push(this.actions['recover']);
-        this.menus.push(this.actions['freeze']);
-        break;
-      case 'freezed':
-        this.menus.push(this.actions['recover']);
-        break;
-    }
-
-    this.menus.push(this.actions['delete']);
   }
 
   componentWillMount() {
@@ -96,6 +77,25 @@ class Actions extends React.Component {
   }
 
   render() {
+
+    this.menus = [];
+    let props = this.props;
+    let status = props.user.userNodes.status;
+
+    switch (status) {
+      case 'wait_for_sync':
+        this.menus.push(this.actions['sync']);
+        break;
+      case 'working':
+        this.menus.push(this.actions['suspend']);
+        break;
+      case 'suspend':
+        this.menus.push(this.actions['recover']);
+        break;
+    }
+
+    this.menus.push(this.actions['delete']);
+
     let menus = this.menus.map( action => {
       return <li>
         {/*<Link to={`/nodes/${action}`} >*/}

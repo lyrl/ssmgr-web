@@ -5,7 +5,9 @@ import {
   NODE_USER_LIST_UNLOAD,
   NODE_USER_LIST_REFRESH,
   NODE_USER_ADD,
-  NODE_USER_DELETE
+  NODE_USER_DELETE,
+  NODE_USER_SUSPEND,
+  NODE_USER_RECOVER,
 } from '../constants/actionTypes';
 
 export default (state = {}, action) => {
@@ -17,6 +19,8 @@ export default (state = {}, action) => {
     case NODE_USER_LIST_REFRESH:
     case NODE_USER_ADD:
     case NODE_USER_DELETE:
+    case NODE_USER_SUSPEND:
+    case NODE_USER_RECOVER:
       return {...state, need_refresh: true};
     case NODE_USER_ADD_MODAL_LOAD:
       return {...state, users: action.payload.users};
